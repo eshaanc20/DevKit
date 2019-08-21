@@ -1,9 +1,28 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import ResultCard from './Components/ResultCard';
+import Search from './Components/Search';
 
 class App extends Component{
   state = {
-    response: null
+    APIS:[
+      {
+        title:"Title 1",
+        link:"google.com"
+      },
+      {
+        title:"Title 2",
+        link:"yahoo.com"
+      },
+      {
+        title:"Title 3",
+        link:"amazon.com"
+      },
+      {
+        title:"Title 4",
+        link:"github.com"
+      },
+    ],
   }
 
   componentDidMount() {
@@ -17,11 +36,12 @@ class App extends Component{
         console.log(err);
       })
   }
-
   render() {
     return(
       <div>
         {this.state.response}
+        <Search cardInfos={this.state.searchButton}/>
+        <ResultCard cardInfos={this.state.APIS}/>
       </div>
     )
   }
