@@ -4,44 +4,34 @@ import ResultCard from './Components/ResultCard';
 import Search from './Components/Search';
 
 class App extends Component{
+  constructor(props){
+    super(props);
+    this.APIList = null
+  }
+
   state = {
-    APIS:[
-      {
-        title:"Title 1",
-        link:"google.com"
-      },
-      {
-        title:"Title 2",
-        link:"yahoo.com"
-      },
-      {
-        title:"Title 3",
-        link:"amazon.com"
-      },
-      {
-        title:"Title 4",
-        link:"github.com"
-      },
-    ],
+    request:false
   }
 
   componentDidMount() {
     axios.get('http://localhost:9000/APIList')
-      .then(res => {
+      .then((res) => {
+        this.APIList=res.data;
         this.setState({
-          response: res.data
-        })
+          request:true
+        });
+
       })
       .catch(err => {
         console.log(err);
       })
   }
+
   render() {
+    console.log(this.APIList)
     return(
       <div>
-        {this.state.response}
-        <Search cardInfos={this.state.searchButton}/>
-        <ResultCard cardInfos={this.state.APIS}/>
+        {this.APIList!=null? <Search cardInfos={this.APIList} />:null}
       </div>
     )
   }
