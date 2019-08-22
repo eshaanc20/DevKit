@@ -7,7 +7,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 class TopBar extends Component {
-
     render() {
         return (
           <AppBar position="static" style={{ background: "black" }}>
@@ -18,7 +17,6 @@ class TopBar extends Component {
               <Typography variant="h6" style={{flexGrow:'1'}}>
                 Search API
               </Typography>
-              <Button color="inherit">Add API</Button>
             </Toolbar>
           </AppBar>
    

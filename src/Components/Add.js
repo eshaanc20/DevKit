@@ -6,6 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
+import Snackbar from '@material-ui/core/Snackbar';
 import axios from 'axios';
 
 class Add extends Component{
@@ -119,17 +120,10 @@ class ErrorMessage extends Component{
 	}
 	render() {
 		return(
-			<Dialog open={this.state.open}>
-				<DialogTitle>
-					Adding API
-				</DialogTitle>
-				<DialogContent>
-					{this.props.message}
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => this.setState({open:false})}>Close</Button>
-				</DialogActions>
-			</Dialog>
+			<Snackbar 
+				open={this.state.open}
+				onClose={() => this.setState({open:false})}
+				message={this.props.message}/>
 		)
 	}
 }
