@@ -12,12 +12,17 @@ import TextField from '@material-ui/core/TextField';
       textField:null,
     }
 
-    checkList (cardInfo) {
-      return cardInfo.title.indexOf('2')>-1
+    checkList = (cardInfo) => {
+      if (this.state.textField === null){
+        return true
+      }
+      else{
+        return cardInfo.title.indexOf(this.state.textField)>-1
+      }
     }
     
    render() { 
-    var filteredList = this.props.cardInfos.filter(this.checkList);
+    var filteredList = this.props.cardInfos.filter(this.checkList,this.state.textField);
     
      return (
        <div>
