@@ -6,7 +6,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Add from './Add'
 class TopBar extends Component {
-
     render() {
         return (
           <AppBar position="static" style={{ background: "black", maxHeight:"63px"}}>
