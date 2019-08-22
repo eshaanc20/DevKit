@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import ResultCard from './Components/ResultCard';
 import Search from './Components/Search';
+import TopBar from './Components/TopBar'
 
 class App extends Component{
   constructor(props){
@@ -26,11 +26,12 @@ class App extends Component{
         console.log(err);
       })
   }
-
+  
   render() {
     console.log(this.APIList)
     return(
       <div>
+        <TopBar/>
         {this.APIList!=null? <Search cardInfos={this.APIList} />:null}
       </div>
     )
