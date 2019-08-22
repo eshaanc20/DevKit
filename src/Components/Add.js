@@ -5,16 +5,70 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
+import axios from 'axios';
 
 class Add extends Component{
 	state = {
-		open: false
+		open: false,
 	}
 
 	handleEvent(event) {
 		this.setState({
 			open: !this.state.open
 		})
+	}
+
+	handleChange(event, input) {
+		if (input === 'Name') {
+			this.setState({
+				name: event.target.value
+			})
+		} else if (input === 'Organization') {
+			this.setState({
+				organization: event.target.value
+			})
+		} else if (input === 'Categories') {
+			this.setState({
+				categories: event.target.value
+			})
+		} else if (input === 'Language') {
+			this.setState({
+				language: event.target.value
+			})
+		} else if (input === 'Recommended') {
+			this.setState({
+				recommended: event.target.value
+			})
+		} else if (input === 'URL') {
+			this.setState({
+				url: event.target.value
+			})
+		}
+	}
+
+	checked (event) {
+		this.setState({
+			price: event.target.checked
+		})
+	}
+
+	submit () {
+		axios.post('http://localhost:9000/add', {
+				name: this.state.name,
+				organization: this.state.organization,
+				categories: this.state.categories,
+				price: this.state.price,
+				language: this.state.language,
+				recommended: this.state.recommended,
+				url: this.state.url
+			})
+			.then(res => {
+				console.log(res)
+			})
+			.catch(err => {
+				console.log(err)
+			})
 	}
 
 	render() {
@@ -25,17 +79,21 @@ class Add extends Component{
 						<DialogTitle>Add API</DialogTitle>
 						<DialogContent>
 							<div style={{display: 'grid', gridTemplateColumns: 'auto auto', gridGap:'40px'}}>
-								<TextField label='Name'/>
-								<TextField label='Organization'/>
-								<TextField label='Categories'/>
-								<TextField label='Price'/>
-								<TextField label='Language'/>
-								<TextField label='URL'/>
+								<TextField label='Name' onChange={(event) => this.handleChange(event,'Name')}/>
+								<TextField label='Organization' onChange={(event) => this.handleChange(event,'Organization')}/>
+								<TextField label='Categories' onChange={(event) => this.handleChange(event,'Categories')}/>
+								<div>
+									Free
+									<Checkbox onClick={this.checked.bind(this)}/>
+								</div>
+								<TextField label='Language' onChange={(event) => this.handleChange(event,'Language')}/>
+								<TextField label='Recommended' onChange={(event) => this.handleChange(event,'Recommended')}/>
 							</div>
+							<TextField label='URL' style={{width:'100%', marginTop:'40px', marginBottom:'20px'}} onChange={(event) => this.handleChange(event,'URL')}/>
 						</DialogContent>
 						<DialogActions>
 							<Button onClick={this.handleEvent.bind(this)}>Close</Button>
-							<Button variant='contained' color='primary'>Submit</Button>
+							<Button variant='contained' color='primary' onClick={this.submit.bind(this)}>Submit</Button>
 						</DialogActions>
 					</div>
 				</Dialog>

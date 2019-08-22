@@ -10,9 +10,7 @@ class App extends Component{
   componentDidMount() {
     axios.get('http://localhost:9000/APIList')
       .then(res => {
-        this.setState({
-          response: res.data
-        })
+        console.log(res)
       })
       .catch(err => {
         console.log(err);
