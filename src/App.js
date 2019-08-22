@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Add from './Components/Add.js';
 
 class App extends Component{
   state = {
@@ -21,6 +22,7 @@ class App extends Component{
   render() {
     return(
       <div>
+        <Add/>
         {this.state.response}
       </div>
     )
