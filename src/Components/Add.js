@@ -11,6 +11,7 @@ import axios from 'axios';
 class Add extends Component{
 	state = {
 		open: false,
+		added: null,
 	}
 
 	handleEvent(event) {
@@ -64,16 +65,23 @@ class Add extends Component{
 				url: this.state.url
 			})
 			.then(res => {
-				console.log(res)
+				this.setState({
+					open: false,
+					added: 'The API was added'
+				})
 			})
 			.catch(err => {
-				console.log(err)
+				this.setState({
+					added: 'The API was not added'
+				})
 			})
 	}
 
 	render() {
 		return(
 			<div style={{margin:'20px'}}>
+				{this.state.added !== null?
+					<ErrorMessage open={true} message={this.state.added}/> : null}
 				<Dialog open={this.state.open}>
 					<div style={{padding:'10px'}}>
 						<DialogTitle>Add API</DialogTitle>
@@ -103,6 +111,27 @@ class Add extends Component{
 			</div>
     )
   }
+}
+
+class ErrorMessage extends Component{
+	state = {
+		open: this.props.open
+	}
+	render() {
+		return(
+			<Dialog open={this.state.open}>
+				<DialogTitle>
+					Adding API
+				</DialogTitle>
+				<DialogContent>
+					{this.props.message}
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => this.setState({open:false})}>Close</Button>
+				</DialogActions>
+			</Dialog>
+		)
+	}
 }
 
 export default Add;
