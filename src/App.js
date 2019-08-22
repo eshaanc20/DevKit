@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Search from './Components/Search';
 import TopBar from './Components/TopBar'
-import Add from './Components/Add.js';
 
 class App extends Component{
   constructor(props){
@@ -34,8 +33,6 @@ class App extends Component{
       <div>
         <TopBar/>
         {this.APIList!=null? <Search cardInfos={this.APIList} />:null}
-        <Add/>
-        {this.state.response}
       </div>
     )
   }

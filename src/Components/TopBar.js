@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import Add from './Add'
 class TopBar extends Component {
 
     render() {
         return (
-          <AppBar position="static" style={{ background: "black" }}>
+          <AppBar position="static" style={{ background: "black", maxHeight:"63px"}}>
             <Toolbar>
               <IconButton edge="start" color="inherit" aria-label="menu">
                 <MenuIcon />
@@ -18,7 +17,7 @@ class TopBar extends Component {
               <Typography variant="h6" style={{flexGrow:'1'}}>
                 Search API
               </Typography>
-              <Button color="inherit">Add API</Button>
+              <Add/>
             </Toolbar>
           </AppBar>
    

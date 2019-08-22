@@ -16,11 +16,14 @@ import SearchIcon from '@material-ui/icons/Search';
 
     //Method for filtering the results
     checkList = (cardInfo) => {
+      var title = cardInfo.title.toLowerCase();
+      console.log(title)
       if (this.state.textField === null){
         return true
       }
       else{
-        return cardInfo.title.indexOf(this.state.textField)>-1
+        var textFieldSearch = this.state.textField.toLowerCase();
+        return title.indexOf(textFieldSearch)>-1
       }
     }
 

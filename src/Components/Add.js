@@ -65,6 +65,7 @@ class Add extends Component{
 				url: this.state.url
 			})
 			.then(res => {
+				console.log(res)
 				this.setState({
 					open: false,
 					added: 'The API was added'
@@ -105,7 +106,7 @@ class Add extends Component{
 						</DialogActions>
 					</div>
 				</Dialog>
-				<Button variant='contained' onClick={this.handleEvent.bind(this)}>
+				<Button variant='contained' style={{marginTop:"0px"}}onClick={this.handleEvent.bind(this)}>
 					Add API
 				</Button>
 			</div>
