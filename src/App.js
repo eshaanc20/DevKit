@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Add from './Components/Add.js';
 
 class App extends Component{
   state = {
@@ -9,9 +10,7 @@ class App extends Component{
   componentDidMount() {
     axios.get('http://localhost:9000/APIList')
       .then(res => {
-        this.setState({
-          response: res.data
-        })
+        console.log(res)
       })
       .catch(err => {
         console.log(err);
@@ -21,6 +20,7 @@ class App extends Component{
   render() {
     return(
       <div>
+        <Add/>
         {this.state.response}
       </div>
     )
