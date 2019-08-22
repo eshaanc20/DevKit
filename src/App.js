@@ -13,6 +13,7 @@ class App extends Component{
     request:false
   }
 
+  //Getting APIList from the backend
   componentDidMount() {
     axios.get('http://localhost:9000/APIList')
       .then((res) => {
@@ -28,7 +29,6 @@ class App extends Component{
   }
   
   render() {
-    console.log(this.APIList)
     return(
       <div>
         <TopBar/>

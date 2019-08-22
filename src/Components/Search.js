@@ -14,6 +14,7 @@ import SearchIcon from '@material-ui/icons/Search';
       textField:null,
     }
 
+    //Method for filtering the results
     checkList = (cardInfo) => {
       if (this.state.textField === null){
         return true
@@ -23,6 +24,7 @@ import SearchIcon from '@material-ui/icons/Search';
       }
     }
 
+    //Style for Search Bar
     searchStyle = ()=> {  
           return{
               maxWidth:'700px',
@@ -32,7 +34,8 @@ import SearchIcon from '@material-ui/icons/Search';
       }
 
    render() { 
-    var filteredList = this.props.cardInfos.filter(this.checkList,this.state.textField);
+    //Getting the filtered list based on input
+    var filteredList = this.props.cardInfos.filter(this.checkList);
     
      return (
        <div>
