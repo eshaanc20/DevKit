@@ -56,7 +56,7 @@ class Add extends Component{
 	}
 
 	submit () {
-		axios.post('http://localhost:9000/add', {
+		axios.post('http://localhost:9000/request', {
 				name: this.state.name,
 				organization: this.state.organization,
 				categories: this.state.categories,
@@ -69,7 +69,7 @@ class Add extends Component{
 				console.log(res)
 				this.setState({
 					open: false,
-					added: 'The API was added'
+					added: 'Request sent to add API to list'
 				})
 			})
 			.catch(err => {
