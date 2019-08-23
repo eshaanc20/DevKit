@@ -6,6 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
+import Snackbar from '@material-ui/core/Snackbar';
 import axios from 'axios';
 
 class Add extends Component{
@@ -65,6 +66,7 @@ class Add extends Component{
 				url: this.state.url
 			})
 			.then(res => {
+				console.log(res)
 				this.setState({
 					open: false,
 					added: 'The API was added'
@@ -105,7 +107,7 @@ class Add extends Component{
 						</DialogActions>
 					</div>
 				</Dialog>
-				<Button variant='contained' onClick={this.handleEvent.bind(this)}>
+				<Button variant='contained' style={{marginTop:"0px"}}onClick={this.handleEvent.bind(this)}>
 					Add API
 				</Button>
 			</div>
@@ -119,17 +121,11 @@ class ErrorMessage extends Component{
 	}
 	render() {
 		return(
-			<Dialog open={this.state.open}>
-				<DialogTitle>
-					Adding API
-				</DialogTitle>
-				<DialogContent>
-					{this.props.message}
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => this.setState({open:false})}>Close</Button>
-				</DialogActions>
-			</Dialog>
+			<Snackbar 
+				open={this.state.open}
+				anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
+				onClose={() => this.setState({open:false})}
+				message={this.props.message}/>
 		)
 	}
 }
