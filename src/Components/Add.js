@@ -6,8 +6,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
-import Snackbar from '@material-ui/core/Snackbar';
 import axios from 'axios';
+import ErrorMessage from './ErrorMessage';
 
 class Add extends Component{
 	state = {
@@ -113,21 +113,6 @@ class Add extends Component{
 			</div>
     )
   }
-}
-
-class ErrorMessage extends Component{
-	state = {
-		open: this.props.open
-	}
-	render() {
-		return(
-			<Snackbar 
-				open={this.state.open}
-				anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
-				onClose={() => this.setState({open:false})}
-				message={this.props.message}/>
-		)
-	}
 }
 
 export default Add;
