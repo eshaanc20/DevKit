@@ -16,6 +16,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
     //Method for filtering the results
     checkList = (cardInfo) => {
+      if (cardInfo.title != null) {
       var title = cardInfo.title.toLowerCase();
       console.log(title)
       if (this.state.textField === null){
@@ -26,6 +27,10 @@ import SearchIcon from '@material-ui/icons/Search';
         return title.indexOf(textFieldSearch)>-1
       }
     }
+    else{
+    return false
+    }
+  }
 
     //Style for Search Bar
     searchStyle = ()=> {  
