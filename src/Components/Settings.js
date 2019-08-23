@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ErrorMessage from './ErrorMessage';
+import TextField from '@material-ui/core/TextField';
 
 class Settings extends Component {
   constructor(props){
@@ -13,7 +14,8 @@ class Settings extends Component {
   }
 
   state = {
-    response: false
+    response: false,
+    password: null,
   }
 
   componentDidMount() {
@@ -81,26 +83,38 @@ class RequestCards extends Component {
   render() {
     this.cards = this.props.cardInfos;
     return (
-      <div>
-        {this.cards.map(card => {
-          return(
-            <Card style={{maxWidth:'700px', margin:'auto', width:'80%'}}>
-              <CardContent>
-                <Typography variant="h5" component="h2">
-                {card.title}
-                </Typography>
-                <Typography color="textSecondary">
-                  {card.link}
-                </Typography>
-                <Button style={{marginTop:'10px'}}>Learn More</Button>
-              </CardContent>
-              <div style={{textAlign:'right', paddingBottom:'10px', paddingRight:'12px'}}>
-                  <Button onClick={this.add.bind(this, card.id)}>Add</Button>
-                  <Button onClick={this.delete.bind(this, card.id)}>Delete</Button>
-              </div>
-            </Card>
-        )})}
-        {this.state.message !== null?  <ErrorMessage message={this.state.message} open={true}/>:null}
+      <div style={{width:'80%', margin:'auto', maxWidth:'700px'}}>
+        <a href='/'>Back</a>
+        {this.state.password === '1234'?
+          <div>
+            {this.cards.map(card => {
+              return(
+                <Card style={{maxWidth:'700px', margin:'auto', width:'80%'}}>
+                  <CardContent>
+                    <Typography variant="h5" component="h2">
+                    {card.title}
+                    </Typography>
+                    <Typography color="textSecondary">
+                      {card.link}
+                    </Typography>
+                    <Button style={{marginTop:'10px'}}>Learn More</Button>
+                  </CardContent>
+                  <div style={{textAlign:'right', paddingBottom:'10px', paddingRight:'12px'}}>
+                      <Button onClick={this.add.bind(this, card.id)}>Add</Button>
+                      <Button onClick={this.delete.bind(this, card.id)}>Delete</Button>
+                  </div>
+                </Card>
+            )})}
+            {this.state.message !== null?  <ErrorMessage message={this.state.message} open={true}/>:null}
+          </div> 
+          : 
+          <Card>
+            <CardContent>
+              <TextField label="Password" onChange={(event) => this.setState({password:event.target.value})}/>
+            </CardContent>
+          </Card>
+        
+        }    
       </div>
     )
   }
