@@ -49,7 +49,7 @@ class Add extends Component{
 		}
 	}
 
-	checked (event) {
+	checked = (event) => {
 		this.setState({
 			price: event.target.checked
 		})
@@ -80,6 +80,7 @@ class Add extends Component{
 	}
 
 	render() {
+		console.log(this.state.price)
 		return(
 			<div style={{margin:'20px'}}>
 				{this.state.added !== null?
@@ -94,7 +95,7 @@ class Add extends Component{
 								<TextField label='Categories' onChange={(event) => this.handleChange(event,'Categories')}/>
 								<div>
 									Free
-									<Checkbox onClick={this.checked.bind(this)}/>
+									<Checkbox onClick={this.checked}/>
 								</div>
 								<TextField label='Language' onChange={(event) => this.handleChange(event,'Language')}/>
 								<TextField label='Recommended' onChange={(event) => this.handleChange(event,'Recommended')}/>

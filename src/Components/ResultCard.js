@@ -21,7 +21,7 @@ export class ResultCard extends Component {
           <Card style={this.cardStyle()}>
             <CardContent>
               <Typography variant="h5" component="h2">
-              {cardInfo.title}
+                {cardInfo.title}
               </Typography>
               <Typography color="textSecondary">
                 {cardInfo.link}

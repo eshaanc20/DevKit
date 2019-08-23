@@ -6,8 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ErrorMessage from './ErrorMessage';
 import TextField from '@material-ui/core/TextField';
+import ResultCard from './ResultCard';
 
-class Settings extends Component {
+class Requests extends Component {
   constructor(props){
     super(props);
     this.requests = []
@@ -33,8 +34,7 @@ class Settings extends Component {
 
   render() {
     return(
-      <div style={{marginTop:'40px'}}>
-        <h2 style={{textAlign:'center'}}>Settings</h2>
+      <div style={{ width:'80%', margin:'auto'}}>
         <RequestCards cardInfos={this.requests}/>
       </div>
     )
@@ -83,13 +83,14 @@ class RequestCards extends Component {
   render() {
     this.cards = this.props.cardInfos;
     return (
-      <div style={{width:'80%', margin:'auto', maxWidth:'700px'}}>
-        <a href='/'>Back</a>
+      <div>
         {this.state.password === '1234'?
-          <div>
+          <div style={{margin:'auto', width:'90%', maxWidth:'600px'}}>
+            <a href='/'>Back</a>
+            <h2 style={{textAlign:'center'}}>Requests</h2>
             {this.cards.map(card => {
               return(
-                <Card style={{maxWidth:'700px', margin:'auto', width:'80%'}}>
+                <Card>
                   <CardContent>
                     <Typography variant="h5" component="h2">
                     {card.title}
@@ -108,16 +109,19 @@ class RequestCards extends Component {
             {this.state.message !== null?  <ErrorMessage message={this.state.message} open={true}/>:null}
           </div> 
           : 
-          <Card>
-            <CardContent>
-              <TextField label="Password" onChange={(event) => this.setState({password:event.target.value})}/>
-            </CardContent>
-          </Card>
-        
+          <div style={{margin:'auto', marginTop:'100px', width:'80%', maxWidth:'400px'}}>
+            <a  href='/'>Back</a>
+            <Card style={{margin:'auto', marginTop:'60px', textAlign:'center', paddingTop:'10px', paddingBottom:'20px'}}>
+              <CardContent>
+                <h2 style={{marginBottom:'28px'}} variant='h5'>Settings</h2>
+                <TextField label="Password" onChange={(event) => this.setState({password:event.target.value})}/>
+              </CardContent>
+            </Card>
+          </div>
         }    
       </div>
     )
   }
 }
 
-export default Settings;
+export default Requests;
