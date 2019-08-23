@@ -123,6 +123,7 @@ class ErrorMessage extends Component{
 		return(
 			<Snackbar 
 				open={this.state.open}
+				anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
 				onClose={() => this.setState({open:false})}
 				message={this.props.message}/>
 		)
