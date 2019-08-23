@@ -10,7 +10,7 @@ class Homepage extends Component{
   }
 
   state = {
-    request:false
+    response:false
   }
 
   //Getting APIList from the backend
@@ -19,7 +19,7 @@ class Homepage extends Component{
       .then((res) => {
         this.APIList=res.data;
         this.setState({
-          request:true
+          response:true
         });
 
       })
