@@ -6,6 +6,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
 import axios from 'axios';
 import ErrorMessage from './ErrorMessage';
 
@@ -13,6 +16,7 @@ class Add extends Component{
 	state = {
 		open: false,
 		added: null,
+		step: 0,
 	}
 
 	handleEvent(event) {
@@ -34,9 +38,9 @@ class Add extends Component{
 			this.setState({
 				categories: event.target.value
 			})
-		} else if (input === 'Language') {
+		} else if (input === 'Languages') {
 			this.setState({
-				language: event.target.value
+				languages: event.target.value
 			})
 		} else if (input === 'Recommended') {
 			this.setState({
@@ -80,29 +84,52 @@ class Add extends Component{
 
 	render() {
 		return(
-			<div style={{margin:'20px'}}>
+			<div style={{margin:'20px',color:'black'}}>
 				{this.state.added !== null?
 					<ErrorMessage open={true} message={this.state.added}/> : null}
 				<Dialog open={this.state.open}>
 					<div style={{padding:'10px'}}>
-						<DialogTitle>Add API</DialogTitle>
+						<DialogTitle style={{paddingBottom:'0px'}}>Add API</DialogTitle>
 						<DialogContent>
-							<div style={{display: 'grid', gridTemplateColumns: 'auto auto', gridGap:'40px'}}>
-								<TextField label='Name' onChange={(event) => this.handleChange(event,'Name')}/>
-								<TextField label='Organization' onChange={(event) => this.handleChange(event,'Organization')}/>
-								<TextField label='Categories' onChange={(event) => this.handleChange(event,'Categories')}/>
-								<div>
-									Free
-									<Checkbox onClick={this.checked}/>
-								</div>
-								<TextField label='Language' onChange={(event) => this.handleChange(event,'Language')}/>
-								<TextField label='Recommended' onChange={(event) => this.handleChange(event,'Recommended')}/>
+							<div style={{width:'350px', margin:'auto'}}>
+							<Stepper activeStep={this.state.step}>
+								<Step><StepLabel></StepLabel></Step>
+								<Step><StepLabel></StepLabel></Step>
+							</Stepper>
 							</div>
-							<TextField label='URL' style={{width:'100%', marginTop:'40px', marginBottom:'20px'}} onChange={(event) => this.handleChange(event,'URL')}/>
+							{this.state.step === 0? 
+								<div style={{display:'flex', flexDirection:'column', width:'70%', margin:'auto', justifyContent:'space-evenly', height:'250px', marginBottom:'25px'}}>
+									<TextField label='Name' onChange={(event) => this.handleChange(event,'Name')} defaultValue={this.state.name}/>
+									<TextField label='Organization' onChange={(event) => this.handleChange(event,'Organization')} defaultValue={this.state.organization}/>
+									<TextField label='URL to documentation' onChange={(event) => this.handleChange(event,'URL')} defaultValue={this.state.url}/>
+								</div>
+								: null
+							}
+							{this.state.step === 1?
+								<div style={{display:'flex', flexDirection:'column', width:'70%', margin:'auto', justifyContent:'space-evenly', height:'250px', marginBottom:'25px'}}>
+									<TextField label='Categories' onChange={(event) => this.handleChange(event,'Categories')} defaultValue={this.state.categories}/>
+									<div>
+										<Checkbox onClick={this.checked}/>
+										Free
+									</div>
+									<TextField label='Languages' defaultValue={this.state.languages} onChange={(event) => this.handleChange(event,'Languages')} defaultValue={this.state.languages}/>
+								</div> 
+								: null
+							}
 						</DialogContent>
 						<DialogActions>
-							<Button onClick={this.handleEvent.bind(this)}>Close</Button>
-							<Button variant='contained' color='primary' onClick={this.submit.bind(this)}>Submit</Button>
+							{this.state.step === 0? 
+								<div>
+									<Button onClick={this.handleEvent.bind(this)}>Close</Button>
+									<Button variant='outlined' color='primary' style={{marginLeft:'8px'}} onClick={()=>this.setState({step:1})}>Next</Button>
+								</div>
+								:
+								<div>
+									<Button onClick={this.handleEvent.bind(this)}>Close</Button>
+									<Button variant='outlined' color='primary' style={{marginLeft:'8px', marginRight:'8px'}} onClick={()=>this.setState({step:0})}>Back</Button>
+									<Button variant='contained' color='primary' onClick={this.submit.bind(this)}>Submit</Button>
+								</div>
+							}
 						</DialogActions>
 					</div>
 				</Dialog>
