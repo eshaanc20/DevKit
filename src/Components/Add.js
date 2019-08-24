@@ -6,8 +6,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
-import Snackbar from '@material-ui/core/Snackbar';
 import axios from 'axios';
+import ErrorMessage from './ErrorMessage';
 
 class Add extends Component{
 	state = {
@@ -49,14 +49,14 @@ class Add extends Component{
 		}
 	}
 
-	checked (event) {
+	checked = (event) => {
 		this.setState({
 			price: event.target.checked
 		})
 	}
 
 	submit () {
-		axios.post('http://localhost:9000/add', {
+		axios.post('http://localhost:9000/request', {
 				name: this.state.name,
 				organization: this.state.organization,
 				categories: this.state.categories,
@@ -66,10 +66,9 @@ class Add extends Component{
 				url: this.state.url
 			})
 			.then(res => {
-				console.log(res)
 				this.setState({
 					open: false,
-					added: 'The API was added'
+					added: 'Request sent to add API to list'
 				})
 			})
 			.catch(err => {
@@ -94,7 +93,7 @@ class Add extends Component{
 								<TextField label='Categories' onChange={(event) => this.handleChange(event,'Categories')}/>
 								<div>
 									Free
-									<Checkbox onClick={this.checked.bind(this)}/>
+									<Checkbox onClick={this.checked}/>
 								</div>
 								<TextField label='Language' onChange={(event) => this.handleChange(event,'Language')}/>
 								<TextField label='Recommended' onChange={(event) => this.handleChange(event,'Recommended')}/>
@@ -113,21 +112,6 @@ class Add extends Component{
 			</div>
     )
   }
-}
-
-class ErrorMessage extends Component{
-	state = {
-		open: this.props.open
-	}
-	render() {
-		return(
-			<Snackbar 
-				open={this.state.open}
-				anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
-				onClose={() => this.setState({open:false})}
-				message={this.props.message}/>
-		)
-	}
 }
 
 export default Add;

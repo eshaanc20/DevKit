@@ -19,20 +19,17 @@ export class ResultCard extends Component {
     render() {
         return this.props.cardInfos.map((cardInfo) => (
           <Card style={this.cardStyle()}>
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-            {cardInfo.link}
-            </Typography>
-            <Typography variant="h5" component="h2">
-            {cardInfo.title}
-            </Typography>
-            <Typography color="textSecondary">
-              {cardInfo.link}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
+            <CardContent>
+              <Typography variant="h5" component="h2">
+                {cardInfo.title}
+              </Typography>
+              <Typography color="textSecondary">
+                {cardInfo.organization}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button>Learn More</Button>
+            </CardActions>
           </Card>
         )
       )   

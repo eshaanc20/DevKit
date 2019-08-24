@@ -6,10 +6,6 @@ import SearchIcon from '@material-ui/icons/Search';
 
 
   class Search extends Component {
-    constructor(props) {
-      super(props);
-    }
-
     state={
       textField:null,
     }
@@ -18,7 +14,6 @@ import SearchIcon from '@material-ui/icons/Search';
     checkList = (cardInfo) => {
       if (cardInfo.title != null) {
       var title = cardInfo.title.toLowerCase();
-      console.log(title)
       if (this.state.textField === null){
         return true
       }
@@ -59,5 +54,5 @@ import SearchIcon from '@material-ui/icons/Search';
    }
  }
  
- export default Search
+ export default Search;
  
