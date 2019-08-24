@@ -66,7 +66,6 @@ class Add extends Component{
 				url: this.state.url
 			})
 			.then(res => {
-				console.log(res)
 				this.setState({
 					open: false,
 					added: 'Request sent to add API to list'
@@ -80,7 +79,6 @@ class Add extends Component{
 	}
 
 	render() {
-		console.log(this.state.price)
 		return(
 			<div style={{margin:'20px'}}>
 				{this.state.added !== null?

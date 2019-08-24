@@ -24,7 +24,7 @@ export class ResultCard extends Component {
                 {cardInfo.title}
               </Typography>
               <Typography color="textSecondary">
-                {cardInfo.link}
+                {cardInfo.organization}
               </Typography>
             </CardContent>
             <CardActions>

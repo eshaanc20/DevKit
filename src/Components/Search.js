@@ -6,10 +6,6 @@ import SearchIcon from '@material-ui/icons/Search';
 
 
   class Search extends Component {
-    constructor(props) {
-      super(props);
-    }
-
     state={
       textField:null,
     }

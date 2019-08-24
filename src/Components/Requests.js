@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ErrorMessage from './ErrorMessage';
 import TextField from '@material-ui/core/TextField';
-import ResultCard from './ResultCard';
 
 class Requests extends Component {
   constructor(props){
@@ -35,7 +34,7 @@ class Requests extends Component {
   render() {
     return(
       <div style={{ width:'80%', margin:'auto'}}>
-        <RequestCards cardInfos={this.requests}/>
+        <RequestCards cards={this.requests}/>
       </div>
     )
   }
@@ -46,14 +45,12 @@ class RequestCards extends Component {
     message: null
   }
 
-  add(id) {
+  add(id, index) {
     axios.post('http://localhost:9000/add', {
         id: id
       })
       .then(res => {
-        this.cards = this.cards.filter(card => {
-          return card.id !== id
-        })
+        this.props.cards.splice(index,1);
         this.setState({
           message: 'The API was added to list'
         })
@@ -63,14 +60,12 @@ class RequestCards extends Component {
       })
   }
 
-  delete(id) {
+  delete(id, index) {
     axios.post('http://localhost:9000/delete', {
         id: id
       })
       .then(res => {
-        this.cards = this.cards.filter(card => {
-          return card.id !== id
-        })
+        this.props.cards.splice(index,1);
         this.setState({
           message: 'The API was not added to list'
         })
@@ -81,28 +76,27 @@ class RequestCards extends Component {
   }
 
   render() {
-    this.cards = this.props.cardInfos;
     return (
       <div>
         {this.state.password === '1234'?
-          <div style={{margin:'auto', width:'90%', maxWidth:'600px'}}>
-            <a href='/'>Back</a>
+          <div style={{margin:'auto', width:'90%', maxWidth:'600px', marginTop:'50px'}}>
+            <a href='/'>back</a>
             <h2 style={{textAlign:'center'}}>Requests</h2>
-            {this.cards.map(card => {
+            {this.props.cards.map((card,index) => {
               return(
-                <Card>
+                <Card style={{marginBottom:'24px'}}>
                   <CardContent>
                     <Typography variant="h5" component="h2">
-                    {card.title}
+                      {card.title}
                     </Typography>
                     <Typography color="textSecondary">
-                      {card.link}
+                      {card.organization}
                     </Typography>
                     <Button style={{marginTop:'10px'}}>Learn More</Button>
                   </CardContent>
                   <div style={{textAlign:'right', paddingBottom:'10px', paddingRight:'12px'}}>
-                      <Button onClick={this.add.bind(this, card.id)}>Add</Button>
-                      <Button onClick={this.delete.bind(this, card.id)}>Delete</Button>
+                      <Button variant='contained' color='primary' style={{marginRight:'10px'}} onClick={this.add.bind(this, card.id, index)}>Add</Button>
+                      <Button variant='contained' color='secondary' onClick={this.delete.bind(this, card.id, index)}>Delete</Button>
                   </div>
                 </Card>
             )})}
@@ -110,7 +104,7 @@ class RequestCards extends Component {
           </div> 
           : 
           <div style={{margin:'auto', marginTop:'100px', width:'80%', maxWidth:'400px'}}>
-            <a  href='/'>Back</a>
+            <a  href='/'>back</a>
             <Card style={{margin:'auto', marginTop:'60px', textAlign:'center', paddingTop:'10px', paddingBottom:'20px'}}>
               <CardContent>
                 <h2 style={{marginBottom:'28px'}} variant='h5'>Settings</h2>
