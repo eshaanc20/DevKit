@@ -16,7 +16,7 @@ class TopBar extends Component {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" style={{flexGrow:'1'}}>
-                Search API
+                DevKit
               </Typography>
               <Add/>
               <Button href="/settings" style={{color:'white'}}>
