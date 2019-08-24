@@ -43,9 +43,9 @@ import SearchIcon from '@material-ui/icons/Search';
      return (
        <div>
          <div style={this.searchStyle()}>
-         <TextField variant="outlined" label="search" style={{width:"650px"}} onChange={(event)=>this.setState({textField:event.target.value})}/>
+         <TextField variant="outlined" label="search" style={{width:"650px"}} onChange={(event)=> {this.inputHandle = event.target.value}}/>
          <IconButton  aria-label="search">
-           <SearchIcon />
+         <SearchIcon onClick={()=>this.setState({textField:this.inputHandle})}/>
          </IconButton>
          </div>
          <ResultCard cardInfos={filteredList}/>
