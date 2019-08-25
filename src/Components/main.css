@@ -11,3 +11,20 @@ h1,h2,h3,h4,h5,p{
     transform: scale(1.03);
     box-shadow: 0px 0px 20px #c5c5c5
 }
+
+.flex-containter{
+    flex:wrap;
+    flex-wrap: row;
+    display: flex;
+}
+
+.resultCardImg{
+    width:'100px';
+    height:'100px'; 
+    border-radius:"100px" ;
+    margin:"20px 10px 20px 20px"; 
+}
+
+.resultCardContent{
+    width: 100%;
+}
