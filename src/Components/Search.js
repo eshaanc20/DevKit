@@ -12,9 +12,10 @@ import SearchIcon from '@material-ui/icons/Search';
 
     //Method for filtering the results
     checkList = (cardInfo) => {
-      if (cardInfo.title != null) {
+      console.log(this.state.textField)
+      if (cardInfo.title !== null ) {
       var title = cardInfo.title.toLowerCase();
-      if (this.state.textField === null){
+      if (this.state.textField === null ||  this.state.textField === ' ' || this.state.textField === undefined){
         return true
       }
       else{
@@ -33,6 +34,7 @@ import SearchIcon from '@material-ui/icons/Search';
               maxWidth:'700px',
               margin:'auto',
               marginBottom:'50px',
+              marginTop:'20px'
           }
       }
 
@@ -43,7 +45,7 @@ import SearchIcon from '@material-ui/icons/Search';
      return (
        <div>
          <div style={this.searchStyle()}>
-         <TextField variant="outlined" label="search" style={this.searchStyle()} onChange={(event)=> {this.inputHandle = event.target.value}}/>
+         <TextField variant="outlined" label="search" style={{width:'650px',}} onChange={(event)=> {this.inputHandle = event.target.value}}/>
          <IconButton  aria-label="search">
          <SearchIcon onClick={()=>this.setState({textField:this.inputHandle})}/>
          </IconButton>
