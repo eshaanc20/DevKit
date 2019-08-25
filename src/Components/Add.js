@@ -74,14 +74,20 @@ class Add extends Component{
 				name: this.state.name,
 				organization: this.state.organization,
 				type: this.state.type,
-				category: this.state.categories,
+				category: this.state.category,
 				price: this.state.price,
-				language: this.state.language,
-				recommended: this.state.recommended,
+				languages: this.state.languages,
 				url: this.state.url
 			})
 			.then(res => {
 				this.setState({
+					name: '',
+					organization: '',
+					type: '',
+					category: '',
+					price: '',
+					languages: [],
+					url: '',
 					open: false,
 					added: 'Request sent to add API to list'
 				})
@@ -126,23 +132,54 @@ class Add extends Component{
 										<MenuItem value={'Software tool'} style={{fontSize:'14px'}}>Software tool</MenuItem>
 									</Select>
 									<p style={{marginBottom:'20px', marginTop:'35px'}}>Category</p>
-									<Select onChange={(event) => this.handleChange(event, 'Category')} value={this.state.category}>
-										<MenuItem value={'Map'} style={{fontSize:'14px'}}>Map</MenuItem>
+									<Select onChange={(event) => this.handleChange(event, 'Category')} value={this.state.category} MenuProps={{style: {height: '400px'}}}>
 										<MenuItem value={'Calendar'} style={{fontSize:'14px'}}>Calendar</MenuItem>
-										<MenuItem value={'Storage'} style={{fontSize:'14px'}}>Storage</MenuItem>
-										<MenuItem value={'Messaging'} style={{fontSize:'14px'}}>Messaging</MenuItem>
+										<MenuItem value={'Data'} style={{fontSize:'14px'}}>Data</MenuItem>
+										<MenuItem value={'Finance'} style={{fontSize:'14px'}}>Finance</MenuItem>
+										<MenuItem value={'Front-end'} style={{fontSize:'14px'}}>Front-end</MenuItem>
 										<MenuItem value={'Geocoding'} style={{fontSize:'14px'}}>Geocoding</MenuItem>
+										<MenuItem value={'Health'} style={{fontSize:'14px'}}>Health</MenuItem>
+										<MenuItem value={'Map'} style={{fontSize:'14px'}}>Map</MenuItem>
+										<MenuItem value={'Machine Learning'} style={{fontSize:'14px'}}>Machine Learning</MenuItem>
+										<MenuItem value={'Math'} style={{fontSize:'14px'}}>Math</MenuItem>
+										<MenuItem value={'Music'} style={{fontSize:'14px'}}>Music</MenuItem>		
+										<MenuItem value={'Messaging'} style={{fontSize:'14px'}}>Messaging</MenuItem>	
+										<MenuItem value={'News'} style={{fontSize:'14px'}}>News</MenuItem>		
+										<MenuItem value={'Storage'} style={{fontSize:'14px'}}>Storage</MenuItem>
+										<MenuItem value={'Weather'} style={{fontSize:'14px'}}>Weather</MenuItem>
 									</Select>
 								</div> 
 								: null
 							}
 							{this.state.step === 2? 
-								<div style={{display:'flex', flexDirection:'column', width:'70%', margin:'auto', justifyContent:'space-evenly', height:'250px', marginBottom:'25px'}}>
-									<TextField label='Languages' defaultValue={this.state.languages} onChange={(event) => this.handleChange(event,'Languages')} defaultValue={this.state.languages}/>
+								<div style={{display:'flex', flexDirection:'column', width:'70%', justifyContent:'space-evenly', margin:'auto', height:'250px', marginBottom:'25px'}}>
+									<div>
+										<p>Languages</p>
+										<Select 
+											multiple 
+											value={this.state.languages === undefined? []: this.state.languages} 
+											onChange={(event) => this.handleChange(event, 'Languages')}
+											MenuProps={{style: {height: '400px'}}}
+											style={{width:'100%'}}
+										>
+											<MenuItem value={'CSS'} style={{fontSize:'14px'}}>CSS</MenuItem>
+											<MenuItem value={'C'} style={{fontSize:'14px'}}>C</MenuItem>
+											<MenuItem value={'C++'} style={{fontSize:'14px'}}>C++</MenuItem>
+											<MenuItem value={'C#'} style={{fontSize:'14px'}}>C#</MenuItem>
+											<MenuItem value={'HTML'} style={{fontSize:'14px'}}>HTML</MenuItem>
+											<MenuItem value={'CSS'} style={{fontSize:'14px'}}>Java</MenuItem>
+											<MenuItem value={'JavaScript'} style={{fontSize:'14px'}}>JavaScript</MenuItem>
+											<MenuItem value={'PHP'} style={{fontSize:'14px'}}>PHP</MenuItem>
+											<MenuItem value={'Python'} style={{fontSize:'14px'}}>Python</MenuItem>
+											<MenuItem value={'SQL'} style={{fontSize:'14px'}}>SQL</MenuItem>
+											<MenuItem value={'TypeScript'} style={{fontSize:'14px'}}>TypeScript</MenuItem>
+											<MenuItem value={'Ruby'} style={{fontSize:'14px'}}>Ruby</MenuItem>
+										</Select>
+									</div>
 									<div>
 										<Checkbox onClick={this.checked}/>
 										Free
-									</div>					
+									</div>		
 								</div> : null
 							}
 						</DialogContent>

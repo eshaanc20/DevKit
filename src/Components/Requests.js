@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ErrorMessage from './ErrorMessage';
 import TextField from '@material-ui/core/TextField';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 class Requests extends Component {
   constructor(props){
@@ -107,6 +108,7 @@ class RequestCards extends Component {
             <a  href='/'>back</a>
             <Card style={{margin:'auto', marginTop:'60px', textAlign:'center', paddingTop:'10px', paddingBottom:'20px'}}>
               <CardContent>
+                <SettingsIcon style={{fontSize:'50px'}}/>
                 <h2 style={{marginBottom:'28px'}} variant='h5'>Settings</h2>
                 <TextField label="Password" onChange={(event) => this.setState({password:event.target.value})}/>
               </CardContent>
