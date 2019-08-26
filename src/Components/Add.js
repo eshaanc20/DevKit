@@ -135,7 +135,7 @@ class Add extends Component{
 								<div className='addOptions2'>
 									<p style={{marginBottom:'20px', marginTop:'35px'}}>Type</p>
 									<Select onChange={(event) => this.handleChange(event, 'Type')} value={this.state.type}>
-										{type.map(type => {
+										{types.map(type => {
 											return <MenuItem value={type} style={{fontSize:'14px'}}>{type}</MenuItem>
 										})}
 									</Select>
@@ -248,11 +248,11 @@ var categories = [
 	'Weather'
 ]
 
-var type = [
+var types = [
 	'API',
 	'Framework',
 	'Library',
-	'Software Tool'
+	'Software Tool',
 ]
 
 var languages = [
@@ -267,10 +267,10 @@ var languages = [
 	'Python',
 	'SQL',
 	'TypeScript',
-	'Ruby'
+	'Ruby',
 ]
 
 export {categories};
 export {languages};
-export {type};
+export {types};
 export default Add;

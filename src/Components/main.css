@@ -74,8 +74,35 @@ h1,h2,h3,h4,h5,p{
 }
 
 .filter{
-	width: 25%;
+	width: 20%;
+	height: 100vh;
 	display: flex;
+	padding-left: 2%;
 	flex-direction: column;
-	border: 1px solid black;
+	justify-content: left;
+	min-width: 305px;
+	background-color: rgb(241, 240, 240);
+}
+
+.grid{
+	display: grid;
+	width: 300px;
+	grid-template-columns: auto auto;
+	grid-column-gap: 20px;
+}
+
+.filter-languages{
+	display: flex;
+}
+
+.filter-title{
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+
+.text-filter{
+	margin-top: 40px;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
 }
