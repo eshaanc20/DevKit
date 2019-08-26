@@ -33,8 +33,8 @@ class Homepage extends Component{
     return(
       <div>
         <TopBar/>
-        <div className="flex-containter">
-          <div style={{position:"absolute"}}>
+        <div className="flex-containter" style={{width:'100%'}}>
+          <div>
         <Filter/>
         </div>
         <div style={{width:'100%'}}>
