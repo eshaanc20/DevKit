@@ -33,9 +33,15 @@ class Homepage extends Component{
     return(
       <div>
         <TopBar/>
+        <div className="flex-containter">
+          <div style={{position:"absolute"}}>
         <Filter/>
+        </div>
+        <div style={{width:'100%'}}>
         {this.APIList!=null? <Search cardInfos={this.APIList} />:null}
+        </div>
       </div>
+    </div>
     )
   }
 }
