@@ -13,35 +13,31 @@ export class ResultCard extends Component {
     
     render() {
       var cardStyling = {maxWidth:'700px', margin:'auto', marginBottom:'50px',transition: '0.2s'}
-
-        return this.props.cardInfos.map((cardInfo) => (
-          <Card className="resultCard" style={cardStyling}>
-            <div className="flex-containter" >
-            <div style={{backgroundColor:'#eaeaea'}}>
-              <img className="resultCardImg" src={image} style={{width:'100px',height:'100px', borderRadius:"100px", margin:"15px", border:'10px white solid'}} alt=""></img>
-            </div>
-            
-            <div className="resultCardContent">
-            <CardContent>
-              <h2>{cardInfo.title}</h2>
-              <h4 color="textSecondary">{cardInfo.organization}</h4>
-              <Chip
-              style={{float:'right'}}
-              size="large"
-              label= {cardInfo.categories}
-            ></Chip>
-              <CardActions>
-              <Button href={cardInfo.url}>Learn More</Button>
-            </CardActions>
-            </CardContent>
-
-            
-            </div>
-            </div>
-          </Card>
-        )
-      )   
-    }
+      return this.props.cardInfos.map((cardInfo) => (
+        <Card className="resultCard" style={cardStyling}>
+          <div className="flex-containter" >
+          <div style={{backgroundColor:'#eaeaea'}}>
+            <img className="resultCardImg" src={image} style={{width:'100px',height:'100px', borderRadius:"100px", margin:"15px", border:'10px white solid'}} alt=""></img>
+          </div>  
+          <div className="resultCardContent">
+          <CardContent>
+            <h2>{cardInfo.title}</h2>
+            <h4 color="textSecondary">{cardInfo.organization}</h4>
+            <Chip
+            style={{float:'right'}}
+            size="large"
+            label= {cardInfo.category}
+          ></Chip>
+            <CardActions>
+            <Button href={cardInfo.url}>Learn More</Button>
+          </CardActions>
+          </CardContent>
+          </div>
+          </div>
+        </Card>
+      )
+    )   
+  }
 }
 
 export default ResultCard

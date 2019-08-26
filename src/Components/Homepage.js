@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Search from './Search';
 import TopBar from './TopBar';
+import Filter from './Filter';
 
 class Homepage extends Component{
   constructor(props){
@@ -32,6 +33,7 @@ class Homepage extends Component{
     return(
       <div>
         <TopBar/>
+        <Filter/>
         {this.APIList!=null? <Search cardInfos={this.APIList} />:null}
       </div>
     )

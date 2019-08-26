@@ -115,15 +115,24 @@ class Add extends Component{
 							</Stepper>
 							</div>
 							{this.state.step === 0? 
-								<div style={{display:'flex', flexDirection:'column', width:'70%', margin:'auto', justifyContent:'space-evenly', height:'250px', marginBottom:'25px'}}>
-									<TextField label='Name' onChange={(event) => this.handleChange(event,'Name')} defaultValue={this.state.name}/>
-									<TextField label='Organization' onChange={(event) => this.handleChange(event,'Organization')} defaultValue={this.state.organization}/>
-									<TextField label='URL to documentation' onChange={(event) => this.handleChange(event,'URL')} defaultValue={this.state.url}/>
+								<div className='addOptions1'>
+									<TextField 
+										label='Name' 
+										onChange={(event) => this.handleChange(event,'Name')} 
+										defaultValue={this.state.name}/>
+									<TextField 
+										label='Organization' 
+										onChange={(event) => this.handleChange(event,'Organization')} 
+										defaultValue={this.state.organization}/>
+									<TextField 
+										label='URL to documentation' 
+										onChange={(event) => this.handleChange(event,'URL')} 
+										defaultValue={this.state.url}/>
 								</div>
 								: null
 							}
 							{this.state.step === 1?
-								<div style={{display:'flex', flexDirection:'column', width:'70%', margin:'auto', height:'250px', marginBottom:'25px'}}>
+								<div className='addOptions2'>
 									<p style={{marginBottom:'20px', marginTop:'35px'}}>Type</p>
 									<Select onChange={(event) => this.handleChange(event, 'Type')} value={this.state.type}>
 										<MenuItem value={'API'} style={{fontSize:'14px'}}>API</MenuItem>
@@ -152,7 +161,7 @@ class Add extends Component{
 								: null
 							}
 							{this.state.step === 2? 
-								<div style={{display:'flex', flexDirection:'column', width:'70%', justifyContent:'space-evenly', margin:'auto', height:'250px', marginBottom:'25px'}}>
+								<div className='addOptions3'>
 									<div>
 										<p>Languages</p>
 										<Select 
@@ -167,7 +176,7 @@ class Add extends Component{
 											<MenuItem value={'C++'} style={{fontSize:'14px'}}>C++</MenuItem>
 											<MenuItem value={'C#'} style={{fontSize:'14px'}}>C#</MenuItem>
 											<MenuItem value={'HTML'} style={{fontSize:'14px'}}>HTML</MenuItem>
-											<MenuItem value={'CSS'} style={{fontSize:'14px'}}>Java</MenuItem>
+											<MenuItem value={'Java'} style={{fontSize:'14px'}}>Java</MenuItem>
 											<MenuItem value={'JavaScript'} style={{fontSize:'14px'}}>JavaScript</MenuItem>
 											<MenuItem value={'PHP'} style={{fontSize:'14px'}}>PHP</MenuItem>
 											<MenuItem value={'Python'} style={{fontSize:'14px'}}>Python</MenuItem>
@@ -186,20 +195,46 @@ class Add extends Component{
 						<DialogActions>
 							{this.state.step === 0? 
 								<div>
-									<Button onClick={this.handleEvent.bind(this)}>Close</Button>
-									<Button variant='outlined' color='primary' style={{marginLeft:'8px'}} onClick={()=>this.setState({step:1})}>Next</Button>
+									<Button 
+										onClick={this.handleEvent.bind(this)}
+									>Close</Button>
+									<Button 
+										variant='outlined' 
+										color='primary' 
+										style={{marginLeft:'8px'}} 
+										onClick={()=>this.setState({step:1})}
+									>Next</Button>
 								</div>
 							: this.state.step === 1?
 								<div>
 									<Button onClick={this.handleEvent.bind(this)}>Close</Button>
-									<Button variant='outlined' color='primary' style={{marginLeft:'8px', marginRight:'8px'}} onClick={()=>this.setState({step:0})}>Back</Button>
-									<Button variant='outlined' color='primary' style={{marginLeft:'8px'}} onClick={()=>this.setState({step:2})}>Next</Button>
+									<Button 
+										variant='outlined' 
+										color='primary' 
+										style={{marginLeft:'8px', marginRight:'8px'}} 
+										onClick={()=>this.setState({step:0})}
+									>Back</Button>
+									<Button 
+										variant='outlined' 
+										color='primary' 
+										style={{marginLeft:'8px'}} 
+										onClick={()=>this.setState({step:2})}
+									>Next</Button>
 								</div>
 							: 
 							<div>
 								<Button onClick={this.handleEvent.bind(this)}>Close</Button>
-								<Button variant='outlined' color='primary' style={{marginLeft:'8px', marginRight:'8px'}} onClick={()=>this.setState({step:1})}>Back</Button>
-								<Button variant='contained' color='primary' onClick={this.submit.bind(this)}>Submit</Button>
+								<Button 
+									variant='outlined' 
+									color='primary' 
+									style={{marginLeft:'8px', marginRight:'8px'}} 
+									onClick={()=>this.setState({step:1})}
+								>Back</Button>
+								<Button 
+									variant='contained' 
+									color='primary' 
+									onClick={this.submit.bind(this)}
+								>Submit</Button>
 							</div>
 							}
 						</DialogActions>
