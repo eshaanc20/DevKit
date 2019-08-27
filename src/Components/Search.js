@@ -37,7 +37,14 @@ class Search extends Component {
     return (
       <div className='search'>
         <div style={{margin:'auto', width: '60%', display: 'flex', minWidth: '400px'}}>
-        <TextField variant="outlined" label="search" style={{width:'100%', margin:'auto'}} onChange={(event)=> {this.inputHandle = event.target.value}}/>
+        <TextField variant="outlined" label="search" style={{width:'650px',}} 
+
+         onKeyPress={(ev) => {
+          console.log(`Pressed keyCode ${ev.key}`);
+          if (ev.key === 'Enter') {
+           this.setState({textField:ev.target.value})
+
+        }}}/>
         <Select 
             MenuProps={{style: {height: '400px'}}}
             style={{width:'200px', marginLeft:'20px', marginRight:'20px'}}

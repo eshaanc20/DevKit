@@ -20,17 +20,29 @@ export class ResultCard extends Component {
             <img className="resultCardImg" src={image} style={{width:'100px',height:'100px', borderRadius:"100px", margin:"15px", border:'10px white solid'}} alt=""></img>
           </div>  
           <div className="resultCardContent">
+            
           <CardContent>
             <h2>{cardInfo.title}</h2>
             <h4 color="textSecondary">{cardInfo.organization}</h4>
+
             <Chip
-            style={{float:'right'}}
-            size="large"
-            label= {cardInfo.category}
-          ></Chip>
+              style={{float:'right', margin:'5px'}}
+              label= {cardInfo.category}>
+            </Chip>
+            
+            <div style={{float:'right'}}>
+              {cardInfo.languages.map((lang) => ( 
+                <Chip
+                  label= {lang}
+                  style={{margin:'5px'}}>
+                </Chip>
+              ))}
+            </div>
+
             <CardActions>
-            <Button href={cardInfo.url}>Learn More</Button>
-          </CardActions>
+              <Button href={cardInfo.url}>Learn More</Button>
+            </CardActions>
+
           </CardContent>
           </div>
           </div>
