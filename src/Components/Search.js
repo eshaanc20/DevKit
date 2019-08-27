@@ -44,7 +44,14 @@ import SearchIcon from '@material-ui/icons/Search';
      return (
        <div>
          <div style={this.searchStyle()}>
-         <TextField variant="outlined" label="search" style={{width:'650px',}} onChange={(event)=> {this.inputHandle = event.target.value}}/>
+         <TextField variant="outlined" label="search" style={{width:'650px',}} 
+         
+         onKeyPress={(ev) => {
+          console.log(`Pressed keyCode ${ev.key}`);
+          if (ev.key === 'Enter') {
+           this.setState({textField:ev.target.value})
+            
+          }}}/>
          <IconButton  aria-label="search">
          <SearchIcon onClick={()=>this.setState({textField:this.inputHandle})}/>
          </IconButton>

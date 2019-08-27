@@ -89,7 +89,8 @@ class Add extends Component{
 					languages: [],
 					url: '',
 					open: false,
-					added: 'Request sent to add API to list'
+					added: 'Request sent to add API to list',
+					step: 0
 				})
 			})
 			.catch(err => {
