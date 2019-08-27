@@ -106,3 +106,12 @@ h1,h2,h3,h4,h5,p{
 	font-weight: bold;
 	text-align: center;
 }
+
+.search{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100vh;
+	width: 50%;
+	margin: auto;
+}
