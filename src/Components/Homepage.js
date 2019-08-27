@@ -33,7 +33,6 @@ class Homepage extends Component{
     return(
       <div>
         <TopBar/>
-        <Filter/>
         {this.APIList!=null? <Search cardInfos={this.APIList} />:null}
       </div>
     )

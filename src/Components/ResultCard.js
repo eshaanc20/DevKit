@@ -16,7 +16,7 @@ export class ResultCard extends Component {
       return this.props.cardInfos.map((cardInfo) => (
         <Card className="resultCard" style={cardStyling}>
           <div className="flex-containter" >
-          <div style={{backgroundColor:'#eaeaea'}}>
+          <div style={{backgroundColor: cardInfo.color}}>
             <img className="resultCardImg" src={image} style={{width:'100px',height:'100px', borderRadius:"100px", margin:"15px", border:'10px white solid'}} alt=""></img>
           </div>  
           <div className="resultCardContent">
