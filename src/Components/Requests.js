@@ -80,7 +80,7 @@ class RequestCards extends Component {
     return (
       <div>
         {this.state.password === '1234'?
-          <div style={{margin:'auto', width:'90%', maxWidth:'600px', marginTop:'50px'}}>
+          <div className='settings'>
             <a href='/'>back</a>
             <h2 style={{textAlign:'center'}}>Requests</h2>
             {this.props.cards.map((card,index) => {
@@ -96,8 +96,17 @@ class RequestCards extends Component {
                     <Button style={{marginTop:'10px'}}>Learn More</Button>
                   </CardContent>
                   <div style={{textAlign:'right', paddingBottom:'10px', paddingRight:'12px'}}>
-                      <Button variant='contained' color='primary' style={{marginRight:'10px'}} onClick={this.add.bind(this, card.id, index)}>Add</Button>
-                      <Button variant='contained' color='secondary' onClick={this.delete.bind(this, card.id, index)}>Delete</Button>
+                      <Button 
+                        variant='contained' 
+                        color='primary' 
+                        style={{marginRight:'10px'}} 
+                        onClick={this.add.bind(this, card.id, index)}
+                      >Add</Button>
+                      <Button 
+                        variant='contained' 
+                        color='secondary' 
+                        onClick={this.delete.bind(this, card.id, index)}
+                      >Delete</Button>
                   </div>
                 </Card>
             )})}
@@ -106,7 +115,7 @@ class RequestCards extends Component {
           : 
           <div style={{margin:'auto', marginTop:'100px', width:'80%', maxWidth:'400px'}}>
             <a  href='/'>back</a>
-            <Card style={{margin:'auto', marginTop:'60px', textAlign:'center', paddingTop:'10px', paddingBottom:'20px'}}>
+            <Card className='settings-password'>
               <CardContent>
                 <SettingsIcon style={{fontSize:'50px'}}/>
                 <h2 style={{marginBottom:'28px'}} variant='h5'>Settings</h2>
