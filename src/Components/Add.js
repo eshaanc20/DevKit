@@ -118,14 +118,17 @@ class Add extends Component{
 							{this.state.step === 0? 
 								<div className='addOptions1'>
 									<TextField 
+										required
 										label='Name' 
 										onChange={(event) => this.handleChange(event,'Name')} 
 										defaultValue={this.state.name}/>
 									<TextField 
+										required
 										label='Organization' 
 										onChange={(event) => this.handleChange(event,'Organization')} 
 										defaultValue={this.state.organization}/>
 									<TextField 
+										required
 										label='URL to documentation' 
 										onChange={(event) => this.handleChange(event,'URL')} 
 										defaultValue={this.state.url}/>

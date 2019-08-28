@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Search from './Search';
 import TopBar from './TopBar';
-import Filter from './Filter';
 
 class Homepage extends Component{
   constructor(props){

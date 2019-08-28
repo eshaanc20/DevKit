@@ -5,7 +5,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import {types} from './Add';
 import {languages} from './Add';
 
-
 class Filter extends Component {
   render() {
     return(

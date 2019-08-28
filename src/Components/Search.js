@@ -11,6 +11,7 @@ class Search extends Component {
   state={
     textField: null,
     category: 'none',
+    show: false,
   }
 
   //Method for filtering the results
@@ -31,42 +32,46 @@ class Search extends Component {
 
   render() { 
   //Getting the filtered list based on input
-    var filteredList = this.props.cardInfos.filter(this.checkList);
+    var filteredList = this.props.cardInfos.filter(this.checkList)
+    if (this.state.category !== 'none') {
+      filteredList = this.props.cardInfos.filter(card => {
+        return card.category === this.state.category
+      });
+    }
     return (
-      <div className='searchPage'>
+      <div className='searchPage' style={{marginTop: this.state.show? '5%': '25%'}}>
         <div className='search'>
-        <SearchIcon 
-          style={{
-            position:'absolute', 
-            fontSize:'24px', 
-            color:'gray',
-            marginTop:'18px',
-            marginLeft: '14px'}}
-          />
-        <input
-        type='text'
-        className='searchInput'
-        placeholder='Search for software tool'
-        value={this.state.textField}
-        onKeyPress={(ev) => {
-          if (ev.key === 'Enter') {
-          this.setState({textField:ev.target.value, category:'none'})
-        }}}>
-        </input>
-        <Select 
-            MenuProps={{style: {height: '400px'}}}
-            className='categorySearch'
-            style={{color: this.state.category==='none'? 'gray': 'black', fontSize:'18px'}}
-            onChange = {(event) => this.setState({category:event.target.value, textField:''})}
-            value={this.state.category}
-          >
-            <MenuItem value='none' style={{fontSize:'14px'}} disabled>Search by category</MenuItem>
-            {categories.map(category => {
-              return <MenuItem value={category} style={{fontSize:'14px'}}>{category}</MenuItem>
-            })}
-        </Select>
+          <SearchIcon 
+            style={{
+              position:'absolute', 
+              fontSize:'24px', 
+              color:'gray',
+              marginTop:'18px',
+              marginLeft: '14px'}}
+            />
+          <input
+          type='text'
+          className='searchInput'
+          placeholder='Search for software tool'
+          onKeyPress={(ev) => {
+            if (ev.key === 'Enter') {
+            this.setState({textField:ev.target.value, category:'none', show: true})
+          }}}>
+          </input>
+          <Select 
+              MenuProps={{style: {height: '400px'}}}
+              className='categorySearch'
+              style={{color: this.state.category==='none'? 'gray': 'black', fontSize:'18px'}}
+              onChange = {(event) => this.setState({category:event.target.value, textField:'', show: true})}
+              value={this.state.category}
+            >
+              <MenuItem value='none' style={{fontSize:'14px'}} disabled>Search by category</MenuItem>
+              {categories.map(category => {
+                return <MenuItem value={category} style={{fontSize:'14px'}}>{category}</MenuItem>
+              })}
+          </Select>
         </div>
-        <ResultCard cardInfos={filteredList}/>
+          {this.state.show? <ResultCard cardInfos={filteredList}/>:null}
       </div>
     )
   }
