@@ -27,17 +27,15 @@ class Filter extends Component {
           </Select>
         </div>
         <div style={{marginTop:'40px'}}>
-          <p className='filter-title'>Languages</p>
-          <div className='grid'>
+          <p className='filter-title'>Types of Software Tools</p>
+          <Select 
+            MenuProps={{style: {height: '400px'}}}
+            style={{width:'200px'}}
+          >
             {languages.map(language => {
-              return(
-                <div className='filter-languages'>
-                  <p style={{width:'80px', marginTop:'11px'}}>{language}</p>
-                  <Checkbox/>
-                </div>
-              )
+              return <MenuItem value={language} style={{fontSize:'14px'}}>{language}</MenuItem>
             })}
-          </div>
+          </Select>
         </div>
       </div>
     )

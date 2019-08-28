@@ -8,11 +8,8 @@ import './main.css';
 import image from './img/img3.jpeg';
 
 export class ResultCard extends Component {
-
-  //Styling of the card (to be moved to CSS)
-    
     render() {
-      var cardStyling = {maxWidth:'700px', margin:'auto', marginBottom:'50px',transition: '0.2s'}
+      var cardStyling = {width:'700px', margin:'auto', marginBottom:'50px',transition: '0.2s'}
       return this.props.cardInfos.map((cardInfo) => (
         <Card className="resultCard" style={cardStyling}>
           <div className="flex-containter" >

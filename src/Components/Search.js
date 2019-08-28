@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import ResultCard from "./ResultCard"
-import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
 import {categories} from './Add';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import SearchIcon from '@material-ui/icons/Search';
 import './main.css';
 
 
 class Search extends Component {
   state={
-    textField:null,
+    textField: null,
+    category: 'none',
   }
 
   //Method for filtering the results
@@ -32,30 +31,40 @@ class Search extends Component {
 
   render() { 
   //Getting the filtered list based on input
-  var filteredList = this.props.cardInfos.filter(this.checkList);
-  
+    var filteredList = this.props.cardInfos.filter(this.checkList);
     return (
-      <div className='search'>
-        <div style={{margin:'auto', width: '60%', display: 'flex', minWidth: '400px'}}>
-        <TextField variant="outlined" label="search" style={{width:'650px',}} 
-
-         onKeyPress={(ev) => {
-          console.log(`Pressed keyCode ${ev.key}`);
+      <div className='searchPage'>
+        <div className='search'>
+        <SearchIcon 
+          style={{
+            position:'absolute', 
+            fontSize:'24px', 
+            color:'gray',
+            marginTop:'18px',
+            marginLeft: '14px'}}
+          />
+        <input
+        type='text'
+        className='searchInput'
+        placeholder='Search for software tool'
+        value={this.state.textField}
+        onKeyPress={(ev) => {
           if (ev.key === 'Enter') {
-           this.setState({textField:ev.target.value})
-
-        }}}/>
+          this.setState({textField:ev.target.value, category:'none'})
+        }}}>
+        </input>
         <Select 
             MenuProps={{style: {height: '400px'}}}
-            style={{width:'200px', marginLeft:'20px', marginRight:'20px'}}
+            className='categorySearch'
+            style={{color: this.state.category==='none'? 'gray': 'black', fontSize:'18px'}}
+            onChange = {(event) => this.setState({category:event.target.value, textField:''})}
+            value={this.state.category}
           >
+            <MenuItem value='none' style={{fontSize:'14px'}} disabled>Search by category</MenuItem>
             {categories.map(category => {
               return <MenuItem value={category} style={{fontSize:'14px'}}>{category}</MenuItem>
             })}
         </Select>
-        <IconButton  aria-label="search">
-          <SearchIcon onClick={()=>this.setState({textField:this.inputHandle})}/>
-        </IconButton>
         </div>
         <ResultCard cardInfos={filteredList}/>
       </div>
