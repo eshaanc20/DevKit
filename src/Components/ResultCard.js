@@ -17,7 +17,7 @@ export class ResultCard extends Component {
       return (
         <div>
           {this.props.cardInfos.map((cardInfo) => (
-            <div data-aos="fade-up" data-aos-offset="-300">
+            <div data-aos="fade-up" data-aos-offset="100">
             <Card className="resultCard" style={cardStyling}>
               <div className="flex-containter" >
               <div style={{backgroundColor: cardInfo.color}}>
