@@ -6,13 +6,18 @@ import Button from '@material-ui/core/Button';
 import Chip from '@material-ui/core/Chip';
 import './main.css';
 import image from './img/img3.jpeg';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
+AOS.init();
 export class ResultCard extends Component {
+  
     render() {
       var cardStyling = {width:'700px', margin:'auto',transition: '0.2s', marginTop:'40px', marginBottom:'40px'}
       return (
         <div>
           {this.props.cardInfos.map((cardInfo) => (
+            <div data-aos="fade-up" data-aos-offset="100">
             <Card className="resultCard" style={cardStyling}>
               <div className="flex-containter" >
               <div style={{backgroundColor: cardInfo.color}}>
@@ -46,8 +51,10 @@ export class ResultCard extends Component {
               </div>
               </div>
             </Card>
+            </div>
           ))}
         </div>
+       
     )
   }
 }
