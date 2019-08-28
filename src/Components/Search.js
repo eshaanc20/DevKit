@@ -4,6 +4,10 @@ import {categories} from './Add';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import SearchIcon from '@material-ui/icons/Search';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Checkbox from '@material-ui/core/Checkbox';
+import {languages} from './Add';
 import './main.css';
 
 
@@ -12,6 +16,8 @@ class Search extends Component {
     textField: null,
     category: 'none',
     show: false,
+    tab: '',
+    language: '',
   }
 
   //Method for filtering the results
@@ -28,6 +34,10 @@ class Search extends Component {
     } else{
     return false
     }
+  }
+
+  filterOptions (event, newValue) {
+    this.setState({tab:newValue})
   }
 
   render() { 
@@ -71,7 +81,32 @@ class Search extends Component {
               })}
           </Select>
         </div>
-          {this.state.show? <ResultCard cardInfos={filteredList}/>:null}
+        {this.state.show? 
+          <div style={{width:'80%', margin:'auto'}}>
+            <div style={{display:'flex', justifyContent:'center'}}>
+              <Tabs value={this.state.tab} style={{marginTop:'20px'}} onChange={this.filterOptions.bind(this)}>
+                <Tab label='API'/>
+                <Tab label='Framework'/>
+                <Tab label='Library'/>
+                <Tab label='Software tool'/>
+              </Tabs>
+              <Select 
+                style={{width:'120px', marginLeft:'20px', marginRight:'25px'}} 
+                onChange={(event) => this.setState({language: event.target.value})}
+                value={this.state.language}
+              >
+                {languages.map(language => {
+                  return <MenuItem value={language}>{language}</MenuItem>
+                })}
+              </Select>
+              <div style={{display:'flex'}}>
+                <p style={{marginTop:'28px'}}>Free</p>
+                <Checkbox style={{width:'20px', height:'21px', marginTop:'18px'}}/>
+              </div>
+            </div>
+            <ResultCard cardInfos={filteredList}/>
+          </div> : null
+        }
       </div>
     )
   }
