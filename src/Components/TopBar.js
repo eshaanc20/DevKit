@@ -10,7 +10,7 @@ import Add from './Add'
 class TopBar extends Component {
     render() {
         return (
-          <AppBar position="static" style={{ background: "black", maxHeight:"63px"}}>
+          <AppBar position="fixed" style={{ background: "black", maxHeight:"63px",}}>
             <Toolbar>
               <IconButton edge="start" color="inherit" aria-label="menu">
                 <MenuIcon />

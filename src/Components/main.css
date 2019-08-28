@@ -152,3 +152,17 @@ h1,h2,h3,h4,h5,p{
 .categorySearch:hover{
 	width: 250%;
 }
+
+.mainTitle{
+	font-size:190px; 
+	font-family:'Avenir'; 
+	font-weight:900;
+	height:200px;
+}
+
+.subTitle{
+	font-size:30px; 
+	font-family:'Helvetica Neue'; 
+	font-weight:300;
+	height:10px;
+}
