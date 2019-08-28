@@ -9,6 +9,7 @@ import Tab from '@material-ui/core/Tab';
 import Checkbox from '@material-ui/core/Checkbox';
 import {languages} from './Add';
 import './main.css';
+import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 
 class Search extends Component {
@@ -49,7 +50,7 @@ class Search extends Component {
       });
     }
     return (
-      <div className='searchPage' style={{marginTop: this.state.show? '5%': '25%'}}>
+      <div className='searchPage' style={{marginTop: '5%'}}>
         <div className='search'>
           <SearchIcon 
             style={{
@@ -65,6 +66,7 @@ class Search extends Component {
           placeholder='Search for software tool'
           onKeyPress={(ev) => {
             if (ev.key === 'Enter') {
+              scroll.scrollTo(600);
             this.setState({textField:ev.target.value, category:'none', show: true})
           }}}>
           </input>
@@ -104,7 +106,7 @@ class Search extends Component {
                 <Checkbox style={{width:'20px', height:'21px', marginTop:'18px'}}/>
               </div>
             </div>
-            <ResultCard cardInfos={filteredList}/>
+            <ResultCard  cardInfos={filteredList}/>
           </div> : null
         }
       </div>
