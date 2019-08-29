@@ -9,16 +9,17 @@ import Tab from '@material-ui/core/Tab';
 import Checkbox from '@material-ui/core/Checkbox';
 import {languages} from './Add';
 import './main.css';
-import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
-
+import {animateScroll as scroll} from 'react-scroll';
 
 class Search extends Component {
   state={
     textField: null,
     category: 'none',
     show: false,
+    tabValue: 0,
     tab: '',
     language: '',
+    checkbox: false,
   }
 
   //Method for filtering the results
@@ -38,17 +39,38 @@ class Search extends Component {
   }
 
   filterOptions (event, newValue) {
-    this.setState({tab:newValue})
+    var tab = newValue === 0? 'API': newValue === 1? 'Framework': newValue === 2? 'Library': 'Software Tool';
+    this.setState({tabValue:newValue, tab: tab})
   }
 
   render() { 
-  //Getting the filtered list based on input
+    //Getting the filtered list based on input
     var filteredList = this.props.cardInfos.filter(this.checkList)
+
     if (this.state.category !== 'none') {
       filteredList = this.props.cardInfos.filter(card => {
         return card.category === this.state.category
       });
     }
+
+    if (this.state.tab !== '') {
+      filteredList = filteredList.filter(element => {
+        return element.type === this.state.tab;
+      })
+    }
+    
+    if (this.state.language !== '') {
+      filteredList = filteredList.filter(element => {
+        return element.languages.indexOf(this.state.language) !== -1;
+      })
+    }
+
+    if (this.state.checkbox === true) {
+      filteredList = filteredList.filter(element => {
+        return element.price;
+      })
+    }
+
     return (
       <div className='searchPage' style={{marginTop: '5%'}}>
         <div className='search'>
@@ -78,15 +100,15 @@ class Search extends Component {
               value={this.state.category}
             >
               <MenuItem value='none' style={{fontSize:'14px'}} disabled>Search by category</MenuItem>
-              {categories.map(category => {
-                return <MenuItem value={category} style={{fontSize:'14px'}}>{category}</MenuItem>
+              {categories.map((category,index) => {
+                return <MenuItem key={index} value={category} style={{fontSize:'14px'}}>{category}</MenuItem>
               })}
           </Select>
         </div>
         {this.state.show? 
           <div style={{width:'80%', margin:'auto'}}>
             <div style={{display:'flex', justifyContent:'center'}}>
-              <Tabs value={this.state.tab} style={{marginTop:'20px'}} onChange={this.filterOptions.bind(this)}>
+              <Tabs value={this.state.tabValue} style={{marginTop:'20px'}} onChange={this.filterOptions.bind(this)}>
                 <Tab label='API'/>
                 <Tab label='Framework'/>
                 <Tab label='Library'/>
@@ -97,13 +119,13 @@ class Search extends Component {
                 onChange={(event) => this.setState({language: event.target.value})}
                 value={this.state.language}
               >
-                {languages.map(language => {
-                  return <MenuItem value={language}>{language}</MenuItem>
+                {languages.map((language,index) => {
+                  return <MenuItem key={index} value={language}>{language}</MenuItem>
                 })}
               </Select>
               <div style={{display:'flex'}}>
                 <p style={{marginTop:'28px'}}>Free</p>
-                <Checkbox style={{width:'20px', height:'21px', marginTop:'18px'}}/>
+                <Checkbox style={{width:'20px', height:'21px', marginTop:'18px'}} onChange={(event) => this.setState({checkbox: event.target.checked})}/>
               </div>
             </div>
             <ResultCard  cardInfos={filteredList}/>
