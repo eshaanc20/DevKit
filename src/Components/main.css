@@ -116,10 +116,10 @@ h1,h2,h3,h4,h5,p{
 
 .search{
 	margin: auto;
-	width: 60%;
+	width: 100%;
 	display: flex;
 	min-width: 400px;
-	max-width: 600px;
+	max-width: 900px;
 }
 
 .searchInput{
@@ -143,14 +143,14 @@ h1,h2,h3,h4,h5,p{
 }
 
 .categorySearch{
-	width: 100%;
+	width: 50%;
 	transition: 0.8s;
 	margin-left: 20px;
 	text-align: center;
 }
 
 .categorySearch:hover{
-	width: 250%;
+	width: 100%;
 }
 
 .mainTitle{

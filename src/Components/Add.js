@@ -114,7 +114,7 @@ class Add extends Component{
 
 	render() {
 		return(
-			<div style={{margin:'20px',color:'black'}}>
+			<div style={{margin:'20px', marginRight:'0px',color:'black'}}>
 				{this.state.added !== null? <ErrorMessage open={true} message={this.state.added}/> : null}
 				<Dialog open={this.state.open}>
 					<div style={{padding:'10px', width:'450px'}}>
@@ -240,7 +240,7 @@ class Add extends Component{
 						</DialogActions>
 					</div>
 				</Dialog>
-				<Button variant='contained' className="addToolButton" style={{marginTop:"0px", borderRadius:'100px', background:'rgb(255,255,255,0.3)', color:"#FFFFFF", fontFamily:"Avenir", fontWeight:'900', textTransform:'none', fontSize:'20px', padding:'0px 25px 0px 25px', transition: '0.2s'}} 
+				<Button variant='contained' className="addToolButton" style={{marginTop:"0px", marginRight: "0px", borderRadius:'100px', background:'rgb(255,255,255,0.3)', color:"#FFFFFF", fontFamily:"Avenir", fontWeight:'900', textTransform:'none', fontSize:'20px', padding:'0px 25px 0px 25px', transition: '0.2s'}} 
 				onClick={this.handleEvent.bind(this)}>
 					Add Tool
 				</Button>

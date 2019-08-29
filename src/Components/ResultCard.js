@@ -13,11 +13,13 @@ AOS.init();
 
 export class ResultCard extends Component {
     render() {
-      var cardStyling = {width:'700px', margin:'auto',transition: '0.2s', marginTop:'40px', marginBottom:'40px'}
+      var cardStyling = {width:'700px', margin:'auto',transition: '0.2s', marginTop:'40px', marginBottom:'40px', overflow:'inherit'}
       return (
-        <div>
+        <div style={{margin:'auto'}}>
+           
           {this.props.cardInfos.map((cardInfo, index) => (
             <div key={index} data-aos="fade-up" data-aos-offset="100">
+                
             <Card className="resultCard" style={cardStyling}>
               <div className="flex-containter" >
               <div style={{backgroundColor: cardInfo.color}}>
@@ -26,15 +28,26 @@ export class ResultCard extends Component {
               <div className="resultCardContent">
                 
               <CardContent>
-                <h2>{cardInfo.title}</h2>
-                <h4 color="textSecondary">{cardInfo.organization}</h4>
+                
+                <h2 style={{flexGrow:'1'}}>{cardInfo.title}</h2> 
+                
 
+                <h4 style={{ color:'white',  float:'right', marginTop:'-60px', background: cardInfo.type==="Library"? ('linear-gradient(to bottom right, #234DD9, #D214F5)'):  cardInfo.type==="API"?('linear-gradient(to bottom right, #23D932, #DBF514)'):('linear-gradient(to bottom right, #FCB412, #F51496)')
+                 , padding:'10px', borderRadius:'20px', marginRight:'-50px'}}>
+                 
+                 {cardInfo.type}</h4>
+                <h4 color="textSecondary">{cardInfo.organization}</h4>
+               
                 <Chip
                   style={{float:'right', margin:'5px'}}
                   label= {cardInfo.category}>
                 </Chip>
-                
-                <div style={{float:'right'}}>
+
+                <CardActions>
+                  <Button href={cardInfo.url}>Learn More</Button>
+                </CardActions>
+
+                <div style={{float:'right',}}>
                   {cardInfo.languages.map((lang) => ( 
                     <Chip
                       label= {lang}
@@ -42,18 +55,14 @@ export class ResultCard extends Component {
                     </Chip>
                   ))}
                 </div>
-
-                <div>{cardInfo.type}</div>
-
-                <CardActions>
-                  <Button href={cardInfo.url}>Learn More</Button>
-                </CardActions>
-
               </CardContent>
+
+            
               </div>
               </div>
             </Card>
             </div>
+           
           ))}
         </div>
        
