@@ -19,6 +19,7 @@ class Add extends Component{
 		open: false,
 		added: null,
 		step: 0,
+		error: false,
 	}
 
 	handleEvent(event) {
@@ -70,7 +71,16 @@ class Add extends Component{
 	}
 
 	submit () {
-		axios.post('http://localhost:9000/request', {
+		if (this.state.name === undefined ||
+				this.state.organization === undefined ||
+				this.state.url === undefined ||
+				this.state.languages === undefined ||
+				this.state.type === undefined ||
+				this.state.category === undefined 
+		) {
+			this.setState({error: true})
+		} else {
+			axios.post('http://localhost:9000/request', {
 				name: this.state.name,
 				organization: this.state.organization,
 				type: this.state.type,
@@ -91,6 +101,7 @@ class Add extends Component{
 					open: false,
 					added: 'Request sent to add API to list',
 					step: 0,
+					error: false,
 				})
 			})
 			.catch(err => {
@@ -98,6 +109,7 @@ class Add extends Component{
 					added: 'The API was not added'
 				})
 			})
+		}
 	}
 
 	render() {
@@ -176,6 +188,7 @@ class Add extends Component{
 										<Checkbox onClick={this.checked}/>
 										Free
 									</div>		
+									{this.state.error? <div style={{color:'darkblue',textAlign:'center'}}>All input fields must be filled in</div>: null}
 								</div> : null
 							}
 						</DialogContent>
