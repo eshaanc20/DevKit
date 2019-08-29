@@ -39,19 +39,19 @@ export class ResultCard extends Component {
                 <h4 color="textSecondary">{cardInfo.organization}</h4>
                
                 <Chip
-                  style={{float:'right', margin:'5px'}}
+                  style={{float:'right', margin:'5px', marginTop:'-25px'}}
                   label= {cardInfo.category}>
                 </Chip>
 
                 <CardActions>
-                  <Button href={cardInfo.url}>Learn More</Button>
+                  <Button href={cardInfo.url}>View More</Button>
                 </CardActions>
 
                 <div style={{float:'right',}}>
                   {cardInfo.languages.map((lang) => ( 
                     <Chip
                       label= {lang}
-                      style={{margin:'5px'}}>
+                      style={{margin:'5px', marginTop:'-45px'}}>
                     </Chip>
                   ))}
                 </div>
