@@ -1,10 +1,14 @@
 /*Result Card Styling*/
+@import "~font-awesome/css/font-awesome.css";
+
+
 h1,h2,h3,h4,h5,p{
     margin: 0px
 }
 
 .resultCard {
-    box-shadow: 0px 0px 15px #dddddd
+	box-shadow: 0px 0px 15px #dddddd;
+	transition:0.3s;
 }
 
 .resultCard:hover {

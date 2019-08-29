@@ -54,7 +54,7 @@ class Homepage extends Component{
         <h1 className="mainTitle" style={{ marginLeft:'-10px'}}>DevKit.</h1>
         <h3 className="subTitle" style={{marginTop:'10px'}}>Search for your favourite Software Tools with over</h3>
         {/*https://www.npmjs.com/package/react-typing-effect*/}
-        <ReactTypingEffect className="subTitle" style={{fontWeight:'400', paddingTop:'20px', cursor:'text'}} speed='100' eraseDelay="4000"
+        <ReactTypingEffect className="subTitle" style={{fontWeight:'400', paddingTop:'20px', cursor:'text'}} speed='50' eraseDelay="1500"
          text={[totaList.toString()+' Total Tools',apiCount.toString()+" APIs", libCount.toString()+" Libraries", frameworkCount.toString()+' Frameworks']}
         />
          </div>
