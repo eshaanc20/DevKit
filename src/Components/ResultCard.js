@@ -13,11 +13,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 AOS.init();
 var FontAwesome = require('react-fontawesome');
+var likedCounter=0
 
 
 export class ResultCard extends Component {
+  state={
+    liked:false
+  }
     render() {
       var cardStyling = {width:'700px', margin:'auto',transition: '0.2s', marginTop:'40px', marginBottom:'40px', overflow:'inherit', backgroundColor:'white', paddingBottom:'0px'}
+      console.log(this.state.liked)
       return (
         <div style={{margin:'auto'}}>
            
@@ -46,6 +51,14 @@ export class ResultCard extends Component {
                   <Button href={cardInfo.url} target="_blank" style={{float:'bottom', marginTop:'0px', fontFamily:'avenir'}}>View Documentation</Button>
                 </CardActions>
 
+                <CardActions>
+                  <Button target="_blank" style={{float:'bottom', marginTop:'0px', fontFamily:'avenir'}} 
+                    onClick={() => {this.setState({liked:true})
+                    likedCounter%2===0? (cardInfo.likes+=1):(cardInfo.likes-=1)
+                    likedCounter+=1
+                    }}>Like{cardInfo.likes}</Button>
+                </CardActions>
+
                 <div style={{float:'right',}}>
                   {cardInfo.languages.map((lang) => ( 
                     <Chip
@@ -55,6 +68,7 @@ export class ResultCard extends Component {
                   ))}
                 </div>
               </CardContent>
+              
 
             
               </div>
