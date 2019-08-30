@@ -117,15 +117,15 @@ class Add extends Component{
 			<div style={{margin:'20px',color:'black'}}>
 				{this.state.added !== null? <ErrorMessage open={true} message={this.state.added}/> : null}
 				<Dialog open={this.state.open}>
-					<div style={{padding:'10px', width:'450px'}}>
+					<div style={{padding:'10px'}}>
 						<DialogTitle style={{paddingBottom:'0px'}}>Add Software Tool</DialogTitle>
 						<DialogContent>
-							<div style={{width:'400px', margin:'auto'}}>
-							<Stepper activeStep={this.state.step}>
-								<Step><StepLabel></StepLabel></Step>
-								<Step><StepLabel></StepLabel></Step>
-								<Step><StepLabel></StepLabel></Step>
-							</Stepper>
+							<div className='addOptions'>
+								<Stepper activeStep={this.state.step}>
+									<Step><StepLabel></StepLabel></Step>
+									<Step><StepLabel></StepLabel></Step>
+									<Step><StepLabel></StepLabel></Step>
+								</Stepper>
 							</div>
 							{this.state.step === 0? 
 								<div className='addOptions1'>

@@ -80,7 +80,7 @@ class Search extends Component {
               fontSize:'24px', 
               color:'gray',
               marginTop:'18px',
-              marginLeft: '14px'}}
+              marginLeft: '18px'}}
             />
           <input
           type='text'
