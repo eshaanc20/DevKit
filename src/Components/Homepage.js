@@ -34,18 +34,16 @@ class Homepage extends Component{
     return(
       <div>
         <TopBar/>
-        
-        <div style={{margin:'auto',marginTop:'10%', flexWrap:'wrap',flexDirection: 'row' , display:'flex', maxWidth:'1200px'}}>
-         <div style={{marginRight:'30px'}}>
-        <h1 className="mainTitle" style={{ marginLeft:'-10px'}}>DevKit.</h1>
-        <h3 className="subTitle" style={{marginTop:'10px'}}>Search for your favourite Software Tools with</h3>
-        {/*https://www.npmjs.com/package/react-typing-effect*/}
-        <ReactTypingEffect className="subTitle" style={{fontWeight:'400', paddingTop:'20px', cursor:'text'}} speed='100' eraseDelay="4000"
-         text={['1604 Tools',"1462 APIs", "232 Libraries", '94 Frameworks']}
-        />
+        <div style={{flexWrap:'wrap', flexDirection: 'row', justifyContent: 'center', display:'flex', maxWidth:'1200px', marginRight:'auto', marginLeft:'auto'}} className='homepage'>
+          <div>
+            <h1 className="mainTitle" style={{ marginLeft:'-10px'}}>DevKit.</h1>
+            <h3 className="subTitle" style={{marginTop:'10px'}}>Search for your favourite Software Tools with</h3>
+            <ReactTypingEffect className="subTitle-text" style={{fontWeight:'400', cursor:'text'}} speed='100' eraseDelay="4000"
+            text={['1604 Tools',"1462 APIs", "232 Libraries", '94 Frameworks']}
+            />
          </div>
          <div style={{maxWidth:'500px'}}>
-        <img src={require('./img/devkit-landing.png')} style={{maxWidth:'500px'}} alt=""></img>
+          <img src={require('./img/devkit-landing.png')} className='image' alt=""></img>
          </div>
         </div>
 
