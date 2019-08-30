@@ -31,16 +31,31 @@ class Homepage extends Component{
   }
   
   render() {
+    var frameworkCount=0,libCount=0, apiCount=0,i;
+    if (this.APIList!=null){
+      for (i = 0; i < this.APIList.length; i++) { 
+        if (this.APIList[i].type === "Framework"){frameworkCount+=1}
+        if (this.APIList[i].type === "Library"){libCount+=1}
+        if (this.APIList[i].type === "API"){apiCount+=1}
+      }
+    }
+
+    if (frameworkCount === undefined){frameworkCount=0}
+    if (libCount === undefined){libCount=0}
+    if (apiCount === undefined){apiCount=0}
+    var totaList=apiCount+libCount+frameworkCount
+    
     return(
       <div>
         <TopBar/>
+
         <div style={{flexWrap:'wrap', flexDirection: 'row', justifyContent: 'center', display:'flex', maxWidth:'1200px', marginRight:'auto', marginLeft:'auto'}} className='homepage'>
           <div>
             <h1 className="mainTitle" style={{ marginLeft:'-10px'}}>DevKit.</h1>
             <h3 className="subTitle" style={{marginTop:'10px'}}>Search for your favourite Software Tools with</h3>
-            <ReactTypingEffect className="subTitle-text" style={{fontWeight:'400', cursor:'text'}} speed='100' eraseDelay="4000"
-            text={['1604 Tools',"1462 APIs", "232 Libraries", '94 Frameworks']}
-            />
+             <ReactTypingEffect className="subTitle" style={{fontWeight:'400', paddingTop:'20px', cursor:'text'}} speed='50' eraseDelay="1500"
+                text={[totaList.toString()+' Total Tools',apiCount.toString()+" APIs", libCount.toString()+" Libraries", frameworkCount.toString()+' Frameworks']}
+              />
          </div>
          <div style={{maxWidth:'500px'}}>
           <img src={require('./img/devkit-landing.png')} className='image' alt=""></img>

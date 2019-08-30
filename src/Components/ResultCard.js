@@ -8,16 +8,29 @@ import './main.css';
 import image from './img/img3.jpeg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 
 AOS.init();
+var likesList = [];
+var FontAwesome = require('react-fontawesome');
 
 export class ResultCard extends Component {
+  state={
+    liked:false,
+    lastLiked:[]
+  }
+  
     render() {
-      var cardStyling = {width:'700px', margin:'auto',transition: '0.2s', marginTop:'40px', marginBottom:'40px'}
+      var cardStyling = {width:'700px', margin:'auto',transition: '0.2s', marginTop:'40px', marginBottom:'40px', overflow:'inherit', backgroundColor:'white', paddingBottom:'0px'}
       return (
-        <div>
+        <div style={{margin:'auto'}}>
           {this.props.cardInfos.map((cardInfo, index) => (
-            <div key={index} data-aos="fade-up" data-aos-offset="100">
+        
+            
+            <div key={index} data-aos="fade-up" data-aos-offset="100">{console.log(cardInfo.likes)}
+  
             <Card className="resultCard" style={cardStyling}>
               <div className="flex-containter" >
               <div style={{backgroundColor: cardInfo.color}}>
@@ -26,34 +39,67 @@ export class ResultCard extends Component {
               <div className="resultCardContent">
                 
               <CardContent>
-                <h2>{cardInfo.title}</h2>
-                <h4 color="textSecondary">{cardInfo.organization}</h4>
-
+                <h2 style={{ display:' inline', fontSize:'28px'}}>{cardInfo.title}</h2> 
                 <Chip
-                  style={{float:'right', margin:'5px'}}
+                  style={{ margin:'7px', marginTop:'2px', padding:'0px',position:'absolute'}}
                   label= {cardInfo.category}>
                 </Chip>
-                
-                <div style={{float:'right'}}>
+
+                <h4 style={{ color:'white',  float:'right', marginTop:'-35px', background: cardInfo.type==="Library"? 'linear-gradient(to bottom right, #234DD9, #D214F5)':  cardInfo.type==="API"?'linear-gradient(to bottom right, #23D932, #14DBF5)':'linear-gradient(to bottom right, #FCB412, #F51496)'
+                , padding:'10px', borderRadius:'20px', marginRight: cardInfo.type==="Library"? '-50px':  cardInfo.type==="API"?'-35px':'-60px'}}>{cardInfo.type}</h4>
+                <h4 color="textSecondary" style={{fontSize:'20px', marginTop:'-4px', marginLeft:'0.5px'}}>{cardInfo.organization}</h4>
+               
+                <CardActions style={{float:'right', marginTop:'-30px'}}>
+                  <Button target="_blank" style={{float:'bottom', marginTop:'0px', fontFamily:'avenir'}} 
+                    onClick={() => {
+                      likesList.push(cardInfo.id)
+                      this.setState({lastLiked:likesList})
+                      
+                        var found = likesList.filter(function(x) {
+                          return x === cardInfo.id;
+                        });
+
+                        if  (found.length%2===1){
+                           cardInfo.likes+=1
+                        }
+                        else{
+                          cardInfo.likes-=1;
+                        }
+
+                        axios.post('http://localhost:9000/like', {
+                              id: cardInfo.id,
+                              likes: cardInfo.likes
+                            })
+                      .then(res => {console.log(res)});
+
+                      console.log(found.length)
+                      console.log(this.state)
+                      
+                      }}>Like</Button>
+                      
+                  <h4>{cardInfo.likes}</h4>
+                </CardActions>
+
+                <CardActions>
+                  <Button href={cardInfo.url} target="_blank" style={{float:'bottom', marginTop:'0px', fontFamily:'avenir'}}>View Documentation</Button>
+                </CardActions>
+
+                <div style={{float:'right',}}>
                   {cardInfo.languages.map((lang) => ( 
                     <Chip
                       label= {lang}
-                      style={{margin:'5px'}}>
+                      style={{margin:'5px', marginTop:'-45px'}}>
                     </Chip>
                   ))}
                 </div>
 
-                <div>{cardInfo.type}</div>
-
-                <CardActions>
-                  <Button href={cardInfo.url}>Learn More</Button>
-                </CardActions>
-
               </CardContent>
+            
               </div>
               </div>
             </Card>
             </div>
+           
           ))}
         </div>
        

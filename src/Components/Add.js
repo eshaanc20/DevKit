@@ -130,7 +130,7 @@ class Add extends Component{
 
 	render() {
 		return(
-			<div style={{margin:'20px',color:'black'}}>
+			<div style={{margin:'20px', marginRight:'0px',color:'black'}}>
 				{this.state.added !== null? <ErrorMessage open={true} message={this.state.added}/> : null}
 				<Dialog open={this.state.open}>
 					<div style={{padding:'10px'}}>
