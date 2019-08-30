@@ -11,8 +11,24 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import axios from 'axios';
 import ErrorMessage from './ErrorMessage';
+
+const StepIcon = (props) => {
+	return props.completed? 
+		<CheckCircleIcon style={{color:'#7DD109'}}/>
+		: <div 
+			style={{
+				color:'white', 
+				backgroundColor: '#0093FF', 
+				height: '20px', 
+				width:'20px', 
+				padding: '2px',
+				textAlign:'center',
+				borderRadius:'50px'}}
+			>{props.icon}</div>
+}
 
 class Add extends Component{
 	state = {
@@ -117,15 +133,15 @@ class Add extends Component{
 			<div style={{margin:'20px', marginRight:'0px',color:'black'}}>
 				{this.state.added !== null? <ErrorMessage open={true} message={this.state.added}/> : null}
 				<Dialog open={this.state.open}>
-					<div style={{padding:'10px', width:'450px'}}>
+					<div style={{padding:'10px'}}>
 						<DialogTitle style={{paddingBottom:'0px'}}>Add Software Tool</DialogTitle>
 						<DialogContent>
-							<div style={{width:'400px', margin:'auto'}}>
-							<Stepper activeStep={this.state.step}>
-								<Step><StepLabel></StepLabel></Step>
-								<Step><StepLabel></StepLabel></Step>
-								<Step><StepLabel></StepLabel></Step>
-							</Stepper>
+							<div className='addOptions'>
+								<Stepper activeStep={this.state.step}>
+									<Step><StepLabel StepIconComponent={StepIcon}></StepLabel></Step>
+									<Step><StepLabel StepIconComponent={StepIcon}></StepLabel></Step>
+									<Step><StepLabel StepIconComponent={StepIcon}></StepLabel></Step>
+								</Stepper>
 							</div>
 							{this.state.step === 0? 
 								<div className='addOptions1'>
@@ -177,7 +193,7 @@ class Add extends Component{
 											value={this.state.languages === undefined? []: this.state.languages} 
 											onChange={(event) => this.handleChange(event, 'Languages')}
 											MenuProps={{style: {height: '400px'}}}
-											style={{width:'100%'}}
+											style={{width:'100%', marginTop:'10px'}}
 										>
 											{languages.map(language => {
 												return <MenuItem value={language} style={{fontSize:'14px'}}>{language}</MenuItem>
@@ -185,7 +201,7 @@ class Add extends Component{
 										</Select>
 									</div>
 									<div>
-										<Checkbox onClick={this.checked}/>
+										<Checkbox onClick={this.checked} style={{color:'#0093FF'}}/>
 										Free
 									</div>		
 									{this.state.error? <div style={{color:'darkblue',textAlign:'center'}}>All input fields must be filled in</div>: null}
@@ -232,7 +248,7 @@ class Add extends Component{
 								>Back</Button>
 								<Button 
 									variant='contained' 
-									color='primary' 
+									style={{backgroundColor:'#0093FF', color:'white'}}
 									onClick={this.submit.bind(this)}
 								>Submit</Button>
 							</div>
@@ -240,7 +256,7 @@ class Add extends Component{
 						</DialogActions>
 					</div>
 				</Dialog>
-				<Button variant='contained' className="addToolButton" style={{marginTop:"0px", marginRight: "0px", borderRadius:'100px', background:'rgb(255,255,255,0.3)', color:"#FFFFFF", fontFamily:"Avenir", fontWeight:'900', textTransform:'none', fontSize:'20px', padding:'0px 25px 0px 25px', transition: '0.2s'}} 
+				<Button variant='contained' style={{marginTop:"0px", borderRadius:'100px', background:'#0093FF', color:"#FFFFFF", fontFamily:"Avenir", fontWeight:'900', textTransform:'none', fontSize:'20px', padding:'0px 25px 0px 25px', transition: '0.2s'}} 
 				onClick={this.handleEvent.bind(this)}>
 					Add Tool
 				</Button>
