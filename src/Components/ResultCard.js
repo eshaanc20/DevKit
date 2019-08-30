@@ -5,7 +5,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Chip from '@material-ui/core/Chip';
 import './main.css';
-import image from './img/img3.jpeg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Likes from './Likes.js'
@@ -25,7 +24,7 @@ export class ResultCard extends Component {
             <Card className="resultCard" style={cardStyling}>
               <div className="flex-containter" >
               <div style={{backgroundColor: cardInfo.color,}}>
-                <img className="resultCardImg" src={image} style={{width:'100px',height:'100px', borderRadius:"100px", margin:"15px", border:'10px white solid', opacity:'1' }} alt=""></img>
+                <img className="resultCardImg" src={require('./img/storage4.jpeg')} style={{width:'100px',height:'100px',objectFit: 'cover', borderRadius:"100px", margin:"15px", border:'10px white solid', opacity:'1' }} alt=""></img>
               </div>  
               <div className="resultCardContent">
                 
@@ -53,9 +52,9 @@ export class ResultCard extends Component {
                 <CardActions>
                   <Button href={cardInfo.url} target="_blank" style={{float:'bottom', marginTop:'20px', fontFamily:'avenir', marginLeft:'-6px'}}>View Details</Button>
                   {cardInfo.price===true?
-                  <MoneyOffIcon style={{fontSize:'10px', marginTop:'20px',  background:'linear-gradient(to bottom right, #56EB33,#8AF023)', color:'white', borderRadius:'100px', width:'22px', height:'22px', textAlign:'center', marginLeft:'0px'}} />
+                  <MoneyOffIcon alt="Free" title="Free" style={{fontSize:'10px', marginTop:'20px',  background:'linear-gradient(to bottom right, #56EB33,#8AF023)', color:'white', borderRadius:'100px', width:'22px', height:'22px', textAlign:'center', marginLeft:'0px'}} />
                   :null}
-                  </CardActions>
+                </CardActions>
 
                 <div style={{float:'right', maxWidth:'330px',  marginTop:'-48px', textAlign:'right'}}>
                   {cardInfo.languages.map((lang) => ( 
