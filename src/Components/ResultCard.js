@@ -23,7 +23,6 @@ export class ResultCard extends Component {
   
     render() {
       var cardStyling = {width:'700px', margin:'auto',transition: '0.2s', marginTop:'40px', marginBottom:'40px', overflow:'inherit', backgroundColor:'white', paddingBottom:'0px'}
-      var likedCounter=0
       console.log(this.state.liked)
       return (
         <div style={{margin:'auto'}}>
@@ -55,12 +54,21 @@ export class ResultCard extends Component {
                       likesList.push(cardInfo.id)
                       this.setState({lastLiked:likesList})
                       
-                      var x = cardInfo.id
                         var found = likesList.filter(function(x) {
-                          return x == cardInfo.id;
+                          return x === cardInfo.id;
                         });
-                        console.log(found.length)
-                      found.length%2===0?cardInfo.likes-=1: cardInfo.likes+=1
+
+                        if  (found.length%2===1){
+                           cardInfo.likes+=1
+                           axios.post('http://localhost:9000/like', {
+                              id: cardInfo.id
+                            })
+                            .then(res => {console.log(res)});
+                        }
+                        else{
+                          cardInfo.likes-=1;
+                        }
+                      console.log(found.length)
                       console.log(this.state)
                       
                       // var i, liked=false;
@@ -80,16 +88,12 @@ export class ResultCard extends Component {
                       //  }
                       }}>Like</Button>
                       
-
                   <h4>{cardInfo.likes}</h4>
                 </CardActions>
 
-              
-                
                 <CardActions>
                   <Button href={cardInfo.url} target="_blank" style={{float:'bottom', marginTop:'0px', fontFamily:'avenir'}}>View Documentation</Button>
                 </CardActions>
-
 
                 <div style={{float:'right',}}>
                   {cardInfo.languages.map((lang) => ( 
@@ -99,6 +103,7 @@ export class ResultCard extends Component {
                     </Chip>
                   ))}
                 </div>
+
               </CardContent>
             
               </div>
