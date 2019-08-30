@@ -108,24 +108,24 @@ class Search extends Component {
         {this.state.show? 
           <div style={{width:'80%', margin:'auto'}}>
             <div style={{display:'flex', justifyContent:'center'}}>
-              <Tabs value={this.state.tabValue} style={{marginTop:'20px'}} onChange={this.filterOptions.bind(this)}>
+              <Tabs value={this.state.tabValue} style={{marginTop:'20px'}} onChange={this.filterOptions.bind(this)} TabIndicatorProps={{style: {backgroundColor:'#0093FF'}}}>
                 <Tab label='API'/>
                 <Tab label='Framework'/>
                 <Tab label='Library'/>
                 <Tab label='Software tool'/>
               </Tabs>
               <Select 
-                style={{width:'120px', marginLeft:'20px', marginRight:'25px'}} 
+                style={{width:'120px', marginLeft:'20px', marginRight:'25px', height: '40px', marginTop:'20px', fontSize:'14px'}} 
                 onChange={(event) => this.setState({language: event.target.value})}
                 value={this.state.language}
               >
                 {languages.map((language,index) => {
-                  return <MenuItem key={index} value={language}>{language}</MenuItem>
+                  return <MenuItem key={index} value={language} style={{fontSize:'14px'}}>{language}</MenuItem>
                 })}
               </Select>
               <div style={{display:'flex'}}>
-                <p style={{marginTop:'28px'}}>Free</p>
-                <Checkbox style={{width:'20px', height:'21px', marginTop:'18px'}} onChange={(event) => this.setState({checkbox: event.target.checked})}/>
+                <p style={{marginTop:'34px'}}>Free</p>
+                <Checkbox style={{width:'20px', height:'21px', marginTop:'25px', color:'#0093FF'}} onChange={(event) => this.setState({checkbox: event.target.checked})}/>
               </div>
             </div>
             <ResultCard  cardInfos={filteredList}/>

@@ -241,11 +241,3 @@ h1,h2,h3,h4,h5,p{
 		width: 220px;
 	}
 }
-.addToolButton{
-	background:rgb(255,255,255,0.3);
-}
-
-.addToolButton:hover{
-	background:rgb(255,255,255,1);
-	transform: scale(0.97);
-}
