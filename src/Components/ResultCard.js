@@ -10,6 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 
 AOS.init();
 var likesList = [];
@@ -23,13 +24,13 @@ export class ResultCard extends Component {
   
     render() {
       var cardStyling = {width:'700px', margin:'auto',transition: '0.2s', marginTop:'40px', marginBottom:'40px', overflow:'inherit', backgroundColor:'white', paddingBottom:'0px'}
-      console.log(this.state.liked)
       return (
         <div style={{margin:'auto'}}>
           {this.props.cardInfos.map((cardInfo, index) => (
+        
             
-            <div key={index} data-aos="fade-up" data-aos-offset="100">
-            
+            <div key={index} data-aos="fade-up" data-aos-offset="100">{console.log(cardInfo.likes)}
+  
             <Card className="resultCard" style={cardStyling}>
               <div className="flex-containter" >
               <div style={{backgroundColor: cardInfo.color}}>
@@ -60,32 +61,20 @@ export class ResultCard extends Component {
 
                         if  (found.length%2===1){
                            cardInfo.likes+=1
-                           axios.post('http://localhost:9000/like', {
-                              id: cardInfo.id
-                            })
-                            .then(res => {console.log(res)});
                         }
                         else{
                           cardInfo.likes-=1;
                         }
+
+                        axios.post('http://localhost:9000/like', {
+                              id: cardInfo.id,
+                              likes: cardInfo.likes
+                            })
+                      .then(res => {console.log(res)});
+
                       console.log(found.length)
                       console.log(this.state)
                       
-                      // var i, liked=false;
-                      // for (i = 0; i < likesList.length; i++) { 
-                      //   if (likesList[i]===cardInfo.id){
-                      //     liked=true
-                      //   }
-                      // }
-                      //  if (liked===false){
-                      //   likesList.push(cardInfo.id);
-                      //   cardInfo.likes+=1;
-                      //   this.setState({liked:true})
-                      //   axios.post('http://localhost:9000/like', {
-                      //     id: cardInfo.id
-                      //   })
-                      //   .then(res => {console.log(res)})
-                      //  }
                       }}>Like</Button>
                       
                   <h4>{cardInfo.likes}</h4>
