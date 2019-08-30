@@ -8,25 +8,27 @@ import './main.css';
 import image from './img/img3.jpeg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 AOS.init();
+var likesList = [];
 var FontAwesome = require('react-fontawesome');
-var likedCounter=0
-
 
 export class ResultCard extends Component {
   state={
-    liked:false
+    liked:false,
+    lastLiked:[]
   }
+  
     render() {
       var cardStyling = {width:'700px', margin:'auto',transition: '0.2s', marginTop:'40px', marginBottom:'40px', overflow:'inherit', backgroundColor:'white', paddingBottom:'0px'}
+      var likedCounter=0
       console.log(this.state.liked)
       return (
         <div style={{margin:'auto'}}>
-           
           {this.props.cardInfos.map((cardInfo, index) => (
+            
             <div key={index} data-aos="fade-up" data-aos-offset="100">
             
             <Card className="resultCard" style={cardStyling}>
@@ -46,18 +48,48 @@ export class ResultCard extends Component {
                 <h4 style={{ color:'white',  float:'right', marginTop:'-35px', background: cardInfo.type==="Library"? 'linear-gradient(to bottom right, #234DD9, #D214F5)':  cardInfo.type==="API"?'linear-gradient(to bottom right, #23D932, #14DBF5)':'linear-gradient(to bottom right, #FCB412, #F51496)'
                 , padding:'10px', borderRadius:'20px', marginRight: cardInfo.type==="Library"? '-50px':  cardInfo.type==="API"?'-35px':'-60px'}}>{cardInfo.type}</h4>
                 <h4 color="textSecondary" style={{fontSize:'20px', marginTop:'-4px', marginLeft:'0.5px'}}>{cardInfo.organization}</h4>
+               
+                <CardActions style={{float:'right', marginTop:'-30px'}}>
+                  <Button target="_blank" style={{float:'bottom', marginTop:'0px', fontFamily:'avenir'}} 
+                    onClick={() => {
+                      likesList.push(cardInfo.id)
+                      this.setState({lastLiked:likesList})
+                      
+                      var x = cardInfo.id
+                        var found = likesList.filter(function(x) {
+                          return x == cardInfo.id;
+                        });
+                        console.log(found.length)
+                      found.length%2===0?cardInfo.likes-=1: cardInfo.likes+=1
+                      console.log(this.state)
+                      
+                      // var i, liked=false;
+                      // for (i = 0; i < likesList.length; i++) { 
+                      //   if (likesList[i]===cardInfo.id){
+                      //     liked=true
+                      //   }
+                      // }
+                      //  if (liked===false){
+                      //   likesList.push(cardInfo.id);
+                      //   cardInfo.likes+=1;
+                      //   this.setState({liked:true})
+                      //   axios.post('http://localhost:9000/like', {
+                      //     id: cardInfo.id
+                      //   })
+                      //   .then(res => {console.log(res)})
+                      //  }
+                      }}>Like</Button>
+                      
+
+                  <h4>{cardInfo.likes}</h4>
+                </CardActions>
+
               
+                
                 <CardActions>
                   <Button href={cardInfo.url} target="_blank" style={{float:'bottom', marginTop:'0px', fontFamily:'avenir'}}>View Documentation</Button>
                 </CardActions>
 
-                <CardActions>
-                  <Button target="_blank" style={{float:'bottom', marginTop:'0px', fontFamily:'avenir'}} 
-                    onClick={() => {this.setState({liked:true})
-                    likedCounter%2===0? (cardInfo.likes+=1):(cardInfo.likes-=1)
-                    likedCounter+=1
-                    }}>Like{cardInfo.likes}</Button>
-                </CardActions>
 
                 <div style={{float:'right',}}>
                   {cardInfo.languages.map((lang) => ( 
@@ -68,8 +100,6 @@ export class ResultCard extends Component {
                   ))}
                 </div>
               </CardContent>
-              
-
             
               </div>
               </div>
