@@ -13,20 +13,20 @@ import MoneyOffIcon from '@material-ui/icons/MoneyOff';
 AOS.init();
 export class ResultCard extends Component {  
     render() {
-      var cardStyling = {width:'700px', margin:'auto',transition: '0.2s', marginTop:'40px', marginBottom:'40px', overflow:'inherit', backgroundColor:'white', paddingBottom:'0px'}
+      var cardStyling = {width:'700px', margin:'auto',transition: '0.2s', marginTop:'40px', marginBottom:'40px', overflow:'inherit', backgroundColor:'white', paddingBottom:'0px',  borderRadius:'10px'}
       return (
-        <div style={{margin:'auto'}}>
+        <div style={{margin:'auto', }}>
           {this.props.cardInfos.map((cardInfo, index) => (
-            <div key={index} data-aos="fade-up" data-aos-offset="100">
+            <div key={index} data-aos="fade-up" data-aos-offset="100" >
   
             <Card className="resultCard" style={cardStyling}>
-              <div className="flex-containter" >
-              <div style={{backgroundColor: cardInfo.color,}}>
-                {console.log(cardInfo.image)}
+              <div className="flex-containter" style={{padding:'0px'}}>
+              
               
               {/* Result Image */}
-              <img className="resultCardImg" src={cardInfo.image} style={{width:'100px',height:'100px',objectFit: 'cover', borderRadius:"100px", margin:"15px", border:'10px white solid', opacity:'1' }} alt=""></img>
-              </div>  
+              <div style={{height:'160px'}}>
+              <img className="resultCardImg" src={cardInfo.image} style={{width:'175px',height:'160px' ,paddingBottom:'0px',objectFit: 'cover', opacity:'1', borderRadius:'10px 0px 0px 10px' }} alt=""></img>
+              </div>
 
               <div className="resultCardContent">
               <CardContent style={{paddingBottom:'0px', height:'100%'}}>
