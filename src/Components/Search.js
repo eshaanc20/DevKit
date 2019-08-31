@@ -88,7 +88,7 @@ class Search extends Component {
           placeholder='Search for software tool'
           onKeyPress={(ev) => {
             if (ev.key === 'Enter') {
-              scroll.scrollTo(600);
+              scroll.scrollTo(560);
             this.setState({textField:ev.target.value, category:'none', show: true})
           }}}>
           </input>

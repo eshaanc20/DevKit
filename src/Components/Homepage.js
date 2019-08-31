@@ -52,8 +52,8 @@ class Homepage extends Component{
         <div style={{flexWrap:'wrap', flexDirection: 'row', justifyContent: 'center', display:'flex', maxWidth:'1200px', marginRight:'auto', marginLeft:'auto'}} className='homepage'>
           <div>
             <h1 className="mainTitle" style={{ marginLeft:'-10px'}}>DevKit.</h1>
-            <h3 className="subTitle" style={{marginTop:'10px'}}>Search for your favourite Software Tools with</h3>
-             <ReactTypingEffect className="subTitle" style={{fontWeight:'400', paddingTop:'20px', cursor:'text'}} speed='50' eraseDelay="1500"
+            <h3 className="subTitle" style={{marginTop:'5px'}}>Search for your favourite Software Tools with</h3>
+             <ReactTypingEffect className="subTitle" style={{fontWeight:'400', marginTop:'-10px', cursor:'text'}} speed='50' eraseDelay="1500"
                 text={[totaList.toString()+' Total Tools',apiCount.toString()+" APIs", libCount.toString()+" Libraries", frameworkCount.toString()+' Frameworks']}
               />
          </div>
