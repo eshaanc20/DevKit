@@ -58,7 +58,7 @@ class Homepage extends Component{
               />
          </div>
          <div style={{maxWidth:'500px'}}>
-          <img src={require('./img/devkit-landing.png')} className='image' alt=""></img>
+          <img src={'/img/devkit-landing.png'} className='image' alt=""></img>
          </div>
         </div>
 
