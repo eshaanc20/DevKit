@@ -17,7 +17,7 @@ class Homepage extends Component{
 
   //Getting APIList from the backend
   componentDidMount() {
-    axios.get('http://localhost:9000/APIList')
+    axios.get('https://devkit-backend.herokuapp.com/APIList')
       .then((res) => {
         this.APIList=res.data;
         this.setState({

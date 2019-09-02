@@ -6,7 +6,6 @@ import Requests from './Components/Requests.js';
 class App extends Component{
   render() {
     return(
-      
       <BrowserRouter>
         <Route exact path='/' component={Homepage}/>
         <Route exact path='/settings' component={Requests}/>

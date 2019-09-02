@@ -26,7 +26,7 @@ export class Likes extends Component {
                         this.props.cardInfoL.likes-=1
                         this.setState({liked:false})
                     }
-                    axios.post('http://localhost:9000/like', {
+                    axios.post('https://devkit-backend.herokuapp.com/like', {
                             id: this.props.cardInfoL.id,
                             likes: this.props.cardInfoL.likes
                         })

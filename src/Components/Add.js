@@ -96,7 +96,7 @@ class Add extends Component{
 		) {
 			this.setState({error: true})
 		} else {
-			axios.post('http://localhost:9000/request', {
+			axios.post('https://devkit-backend.herokuapp.com/request', {
 				name: this.state.name,
 				organization: this.state.organization,
 				type: this.state.type,

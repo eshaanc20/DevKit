@@ -23,7 +23,7 @@ class Requests extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:9000/viewRequests')
+    axios.get('https://devkit-backend.herokuapp.com/viewRequests')
       .then((res) => {
         this.requests = res.data;
         this.setState({
@@ -50,7 +50,7 @@ class RequestCards extends Component {
   }
 
   add(id, index) {
-    axios.post('http://localhost:9000/add', {
+    axios.post('https://devkit-backend.herokuapp.com/add', {
         id: id
       })
       .then(res => {
@@ -65,7 +65,7 @@ class RequestCards extends Component {
   }
 
   delete(id, index) {
-    axios.post('http://localhost:9000/delete', {
+    axios.post('https://devkit-backend.herokuapp.com/delete', {
         id: id
       })
       .then(res => {
