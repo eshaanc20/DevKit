@@ -8,18 +8,18 @@ import ReactTypingEffect from 'react-typing-effect';
 class Homepage extends Component{
   constructor(props){
     super(props);
-    this.APIList = null
+    this.list = null
   }
 
   state = {
     response:false
   }
 
-  //Getting APIList from the backend
+  //Getting list from the backend
   componentDidMount() {
-    axios.get('https://devkit-backend.herokuapp.com/APIList')
+    axios.get('http://localhost:9000/softwareTools')
       .then((res) => {
-        this.APIList=res.data;
+        this.list=res.data;
         this.setState({
           response:true
         });
@@ -32,11 +32,11 @@ class Homepage extends Component{
   
   render() {
     var frameworkCount=0,libCount=0, apiCount=0,i;
-    if (this.APIList!=null){
-      for (i = 0; i < this.APIList.length; i++) { 
-        if (this.APIList[i].type === "Framework"){frameworkCount+=1}
-        if (this.APIList[i].type === "Library"){libCount+=1}
-        if (this.APIList[i].type === "API"){apiCount+=1}
+    if (this.list!=null){
+      for (i = 0; i < this.list.length; i++) { 
+        if (this.list[i].type === "Framework"){frameworkCount+=1}
+        if (this.list[i].type === "Library"){libCount+=1}
+        if (this.list[i].type === "API"){apiCount+=1}
       }
     }
 
@@ -62,7 +62,7 @@ class Homepage extends Component{
          </div>
         </div>
 
-        {this.APIList!=null? <Search cardInfos={this.APIList} />:null}
+        {this.list!=null? <Search cardInfos={this.list} />:null}
       </div>
     )
   }
