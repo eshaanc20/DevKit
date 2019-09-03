@@ -10,6 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Likes from './Likes.js';
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
+import SettingsList from './SettingsList.js';
 
 class Requests extends Component {
   constructor(props){
@@ -23,7 +24,7 @@ class Requests extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:9000/viewRequests')
+    axios.get('https://devkit-backend.herokuapp.com/viewRequests')
       .then((res) => {
         this.requests = res.data;
         this.setState({
@@ -50,13 +51,13 @@ class RequestCards extends Component {
   }
 
   add(id, index) {
-    axios.post('http://localhost:9000/add', {
+    axios.post('https://devkit-backend.herokuapp.com/add', {
         id: id
       })
       .then(res => {
         this.props.cards.splice(index,1);
         this.setState({
-          message: 'The API was added to list'
+          message: 'The software tool was added to the list'
         })
       })
       .catch(err => {
@@ -65,13 +66,14 @@ class RequestCards extends Component {
   }
 
   delete(id, index) {
-    axios.post('http://localhost:9000/delete', {
-        id: id
+    axios.post('https://devkit-backend.herokuapp.com/delete', {
+        id: id,
+        value: true
       })
       .then(res => {
         this.props.cards.splice(index,1);
         this.setState({
-          message: 'The API was not added to list'
+          message: 'The software tool was not added to the list'
         })
       })
       .catch(err => {
@@ -154,6 +156,7 @@ class RequestCards extends Component {
                 </div>
             )})}
             {this.state.message !== null?  <ErrorMessage message={this.state.message} open={true}/>:null}
+            <SettingsList/>
           </div> 
           : 
           <div style={{margin:'auto', marginTop:'100px', width:'80%', maxWidth:'400px'}}>

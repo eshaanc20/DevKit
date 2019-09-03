@@ -184,11 +184,19 @@ h1,h2,h3,h4,h5,p{
 
 .image{
 	max-width: 500px;
+	margin-left: 40px;
 }
 
 .homepage{
 	margin-top: 150px;
 }
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+ }
 
 @media (max-width: 1500px) {
 	.homepage{
@@ -206,7 +214,7 @@ h1,h2,h3,h4,h5,p{
 	}
 	.image{
 		max-width: 350px;
-		margin-left: 10px;
+		margin-left: 40px;
 	}
 }
 
@@ -244,11 +252,7 @@ h1,h2,h3,h4,h5,p{
 	.addOptions{
 		width: 220px;
 	}
+	.text-AppBar{
+		display: none;
+	}
 }
-
-.center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 50%;
-  }

@@ -13,7 +13,7 @@ class TopBar extends Component {
                 DevKit </Typography>
                 <img src={'/img/logo.png'}  alt='' style={{marginLeft:'5px',height:'35px',}}></img>
                 <div style={{ flexGrow:'1'}}></div>
-                <p style={{ fontFamily:'avenir', fontWeight:'900', fontSize:'19px', marginTop:'3px', marginRight:'-10px'}}>Don't See A Tool?</p>
+                <p style={{ fontFamily:'avenir', fontWeight:'900', fontSize:'19px', marginTop:'3px', marginRight:'-10px'}} className='text-AppBar'>Don't See A Tool?</p>
               <Add/>
             </Toolbar>
           </AppBar>
