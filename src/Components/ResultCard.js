@@ -26,7 +26,8 @@ export class ResultCard extends Component {
       }
       return (
         <div style={{margin:'auto', }}>
-          {this.props.cardInfos.map((cardInfo, index) => (
+          {this.props.cardInfos.length!==0?
+          this.props.cardInfos.map((cardInfo, index) => (
             <div key={index} data-aos="fade-up" data-aos-offset="100" >
               <Card className="resultCard" style={cardStyling}>
                 <div className="flex-containter" style={{padding:'0px'}}>     
@@ -36,7 +37,7 @@ export class ResultCard extends Component {
                 </div>
                 <div className="resultCardContent">
                   <CardContent style={{paddingBottom:'0px', height:'100%'}}>
-                    <h2 style={{ display:' inline', fontSize:'30px'}}>{cardInfo.title}</h2> 
+                    <h2 style={{ display:' inline', fontSize:'30px',}}>{cardInfo.title}</h2> 
                     <Chip
                       style={{ margin:'7px', marginTop:'2px', padding:'0px',position:'absolute',}}
                       label= {cardInfo.category}>
@@ -68,7 +69,11 @@ export class ResultCard extends Component {
                 </div>
               </Card>
             </div>
-          ))}
+          )):
+          <div style={{width:'100%', marginTop:'40px', marginBottom:'40px'}}>
+          <img src={'img/no-result.png'} style={{maxWidth:'600px',}} alt="" className="center"/>
+          <h2 style={{textAlign:'center',fontFamily:'avenir',fontWeight:'900', marginTop:'10px', fontSize:'35px'}}>No Results Found</h2>
+          </div>}
         </div>
     )
   }
