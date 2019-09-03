@@ -96,7 +96,7 @@ class Add extends Component{
 		) {
 			this.setState({error: true})
 		} else {
-			axios.post('http://localhost:9000/request', {
+			axios.post('https://devkit-backend.herokuapp.com/request', {
 				name: this.state.name,
 				organization: this.state.organization,
 				type: this.state.type,
@@ -115,7 +115,7 @@ class Add extends Component{
 					languages: [],
 					url: '',
 					open: false,
-					added: 'Request sent to add software tool to list',
+					added: 'Request sent to add software tool to the list',
 					step: 0,
 					error: false,
 				})

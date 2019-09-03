@@ -17,7 +17,7 @@ class Homepage extends Component{
 
   //Getting list from the backend
   componentDidMount() {
-    axios.get('http://localhost:9000/softwareTools')
+    axios.get('https://devkit-backend.herokuapp.com/softwareTools')
       .then((res) => {
         this.list=res.data;
         this.setState({
@@ -48,12 +48,11 @@ class Homepage extends Component{
     return(
       <div>
         <TopBar/>
-
         <div style={{flexWrap:'wrap', flexDirection: 'row', justifyContent: 'center', display:'flex', maxWidth:'1200px', marginRight:'auto', marginLeft:'auto'}} className='homepage'>
           <div>
             <h1 className="mainTitle" style={{ marginLeft:'-10px'}}>DevKit.</h1>
             <h3 className="subTitle" style={{marginTop:'5px'}}>Search for your favourite Software Tools with</h3>
-             <ReactTypingEffect className="subTitle" style={{fontWeight:'400', marginTop:'-10px', cursor:'text'}} speed='50' eraseDelay="1500"
+             <ReactTypingEffect className="subTitle-text" style={{fontWeight:'400', cursor:'text'}} speed='50' eraseDelay="1500"
                 text={[totaList.toString()+' Total Tools',apiCount.toString()+" APIs", libCount.toString()+" Libraries", frameworkCount.toString()+' Frameworks']}
               />
          </div>

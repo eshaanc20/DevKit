@@ -22,7 +22,7 @@ class Settings extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:9000/softwareTools')
+    axios.get('https://devkit-backend.herokuapp.com/softwareTools')
       .then(res => {
         this.list = res.data;
         this.setState({
@@ -32,7 +32,7 @@ class Settings extends Component {
   }
 
   delete(id, index) {
-    axios.post('http://localhost:9000/delete',{
+    axios.post('https://devkit-backend.herokuapp.com/delete',{
       id: id,
       value: false
     })
