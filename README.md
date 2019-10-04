@@ -8,7 +8,7 @@ This web application helps software developers find the optimal software tool su
 Eshaan Chaudhari<br>
 Anton Kanugalawattage
 
-## How we build the project
+## How we built the project
 We created an [express.js back-end](https://github.com/eshaanc20/DevKit-backend) that is being used by our react front-end. The back-end was deployed to Heroku, and the front-end was deployed to Firebase. The react front-end is using Material-UI.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
