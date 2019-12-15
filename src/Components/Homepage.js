@@ -3,7 +3,7 @@ import axios from 'axios';
 import Search from './Search';
 import TopBar from './TopBar';
 import ReactTypingEffect from 'react-typing-effect';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 class Homepage extends Component{
   constructor(props){
@@ -61,7 +61,7 @@ class Homepage extends Component{
          </div>
         </div>
 
-        {this.list!=null? <Search cardInfos={this.list} />:null}
+        {this.list!=null? <Search cardInfos={this.list} />: <div style={{textAlign: 'center'}}><CircularProgress size={40}/></div>}
       </div>
     )
   }
