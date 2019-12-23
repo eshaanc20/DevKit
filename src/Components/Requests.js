@@ -122,7 +122,7 @@ class RequestCards extends Component {
                         <h4 color="textSecondary" style={{fontSize:'20px', marginTop:'-2px', marginLeft:'0.5px', display:'inline'}}>{cardInfo.organization}</h4>
 
                         <CardActions>
-                          <Button href={cardInfo.url} target="_blank" style={{float:'bottom', marginTop:'20px', fontFamily:'avenir', marginLeft:'-6px'}}>View Details</Button>
+                          <Button href={cardInfo.url} target="_blank" style={{float:'bottom', marginTop:'20px', fontFamily:'Avenir, sans-serif', marginLeft:'-6px'}}>View Details</Button>
                           {cardInfo.price===true?
                           <MoneyOffIcon alt="Free" title="Free" style={{fontSize:'10px', marginTop:'20px',  background:'linear-gradient(to bottom right, #56EB33,#8AF023)', color:'white', borderRadius:'100px', width:'22px', height:'22px', textAlign:'center', marginLeft:'0px'}} />
                           :null}

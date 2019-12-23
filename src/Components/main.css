@@ -164,21 +164,21 @@ h1,h2,h3,h4,h5,p{
 
 .mainTitle{
 	font-size:190px; 
-	font-family:'Avenir'; 
+	font-family:'Avenir', sans-serif; 
 	font-weight:900;
 	height: 200px;
 }
 
 .subTitle{
 	font-size:30px; 
-	font-family:'Helvetica Neue'; 
+	font-family:'Helvetica Neue', sans-serif; 
 	font-weight:300;
 	height:40px;
 }
 
 .subTitle-text{
 	font-size:30px; 
-	font-family:'Helvetica Neue'; 
+	font-family:'Helvetica Neue', sans-serif; 
 	font-weight:300;
 }
 

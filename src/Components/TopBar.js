@@ -9,7 +9,7 @@ class TopBar extends Component {
         return (
           <AppBar position="fixed" style={{ background: "black", maxHeight:"63px",}}>
             <Toolbar>
-              <Typography variant="h6" style={{ fontSize:'28px',  fontFamily:'Avenir', fontWeight:'900'}}>
+              <Typography variant="h6" style={{ fontSize:'28px',  fontFamily:'Avenir, sans-serif', fontWeight:'900'}}>
                 DevKit </Typography>
                 <img src={'/img/logo.png'}  alt='' style={{marginLeft:'5px',height:'35px',}}></img>
                 <div style={{ flexGrow:'1'}}></div>

@@ -256,7 +256,7 @@ class Add extends Component{
 						</DialogActions>
 					</div>
 				</Dialog>
-				<Button variant='contained' style={{marginTop:"0px", borderRadius:'100px', background:'#0093FF', color:"#FFFFFF", fontFamily:"Avenir", fontWeight:'900', textTransform:'none', fontSize:'20px', padding:'0px 25px 0px 25px', transition: '0.2s'}} 
+				<Button variant='contained' style={{marginTop:"0px", borderRadius:'100px', background:'#0093FF', color:"#FFFFFF", fontFamily:"Avenir, sans-serif", fontWeight:'900', textTransform:'none', fontSize:'20px', padding:'0px 25px 0px 25px', transition: '0.2s'}} 
 				onClick={this.handleEvent.bind(this)}>
 					Add Tool
 				</Button>
