@@ -9,9 +9,11 @@ Eshaan Chaudhari<br>
 Anton Kanugalawattage
 
 ## How we built the project
-We created an [express.js back-end](https://github.com/eshaanc20/DevKit-backend) that is being used by our react front-end. The back-end was deployed to Heroku, and the front-end was deployed to Firebase. The react front-end is using Material-UI.
+We created a [REST API](https://github.com/eshaanc20/DevKit-backend) using express.js and node.js that is being used by our react front-end. The back-end was deployed to Heroku, and the front-end was deployed to Firebase. The react front-end is using Material-UI. The back-end controls the MongoDB database for this application and uses Mongoose.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Front-end: React, Material-UI<br>
+Back-end: Node.js, Express.js<br>
+Database: MongoDB with Mongoose
 
 ## Running the project locally
 
