@@ -27,8 +27,7 @@ export class Likes extends Component {
                         this.setState({liked:false})
                     }
                     axios.post('https://devkit-backend.herokuapp.com/like', {
-                            id: this.props.cardInfoL.id,
-                            likes: this.props.cardInfoL.likes
+                            title: this.props.cardInfoL.title
                         })
                     }}></ThumbUpAltIcon>{this.props.cardInfoL.likes}</Button>
                 </CardActions>

@@ -50,9 +50,10 @@ class RequestCards extends Component {
     message: null
   }
 
-  add(id, index) {
+  add(Title, index) {
+    console.log(Title)
     axios.post('https://devkit-backend.herokuapp.com/add', {
-        id: id
+        title: Title
       })
       .then(res => {
         this.props.cards.splice(index,1);
@@ -65,10 +66,10 @@ class RequestCards extends Component {
       })
   }
 
-  delete(id, index) {
+  delete(Title, index) {
     axios.post('https://devkit-backend.herokuapp.com/delete', {
-        id: id,
-        value: true
+        title: Title,
+        request: true
       })
       .then(res => {
         this.props.cards.splice(index,1);
@@ -145,12 +146,12 @@ class RequestCards extends Component {
                       <Button 
                         variant='contained' 
                         style={{marginRight:'10px', backgroundColor:'green', color:'white'}} 
-                        onClick={this.add.bind(this, cardInfo.id, index)}
+                        onClick={this.add.bind(this, cardInfo.title, index)}
                       >Add</Button>
                       <Button 
                         variant='contained' 
                         style={{backgroundColor:'red', color:'white'}}
-                        onClick={this.delete.bind(this, cardInfo.id, index)}
+                        onClick={this.delete.bind(this, cardInfo.title, index)}
                       >Delete</Button>
                   </div>
                 </div>
