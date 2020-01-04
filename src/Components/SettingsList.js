@@ -31,10 +31,10 @@ class Settings extends Component {
       })
   }
 
-  delete(id, index) {
+  delete(Title, index) {
     axios.post('https://devkit-backend.herokuapp.com/delete',{
-      id: id,
-      value: false
+      title: Title,
+      request: false
     })
     .then(res => {
       this.list.splice(index,1);
@@ -110,7 +110,7 @@ class Settings extends Component {
                     <Button 
                       variant='contained' 
                       style={{backgroundColor:'red', color:'white'}}
-                      onClick={this.delete.bind(this, cardInfo.id, index)}
+                      onClick={this.delete.bind(this, cardInfo.title, index, )}
                     >Delete</Button>
                 </div>
               </div>
