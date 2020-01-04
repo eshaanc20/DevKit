@@ -115,7 +115,7 @@ class Add extends Component{
 					languages: [],
 					url: '',
 					open: false,
-					added: 'Request sent to add software tool to the list',
+					added: 'Request sent to add software tool to the database',
 					step: 0,
 					error: false,
 				})

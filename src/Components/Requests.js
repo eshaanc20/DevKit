@@ -58,7 +58,7 @@ class RequestCards extends Component {
       .then(res => {
         this.props.cards.splice(index,1);
         this.setState({
-          message: 'The software tool was added to the list'
+          message: 'The software tool was added to the database'
         })
       })
       .catch(err => {
@@ -74,7 +74,7 @@ class RequestCards extends Component {
       .then(res => {
         this.props.cards.splice(index,1);
         this.setState({
-          message: 'The software tool was not added to the list'
+          message: 'The software tool was not added to the database'
         })
       })
       .catch(err => {

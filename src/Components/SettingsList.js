@@ -39,7 +39,7 @@ class Settings extends Component {
     .then(res => {
       this.list.splice(index,1);
       this.setState({
-        message: 'The software tool was removed from the list'
+        message: 'The software tool was removed from the database'
       })
     })
     .catch(err => {
