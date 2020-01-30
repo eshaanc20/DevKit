@@ -9,7 +9,7 @@ class App extends Component{
       <BrowserRouter>
         <Route exact path='/' component={Homepage}/>
         <Route exact path='/settings' component={Requests}/>
-      </BrowserRouter>a
+      </BrowserRouter>
     )
   }
 }
