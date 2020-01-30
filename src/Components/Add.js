@@ -266,6 +266,7 @@ class Add extends Component{
 }
 
 var categories = [
+	'Back-end',
 	'Calendar',
 	'Data',
 	'Finance',
@@ -279,14 +280,14 @@ var categories = [
 	'Messaging',
 	'News',
 	'Storage',
-	'Weather'
+	'Weather',
 ]
 
 var types = [
 	'API',
 	'Framework',
 	'Library',
-	'Software Tool',
+	'Other Software Tool',
 ]
 
 var languages = [
