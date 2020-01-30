@@ -39,7 +39,7 @@ class Search extends Component {
   }
 
   filterOptions (event, newValue) {
-    var tab = newValue === 0? 'API': newValue === 1? 'Framework': newValue === 2? 'Library': 'Software Tool';
+    var tab = newValue === 1? 'API': newValue === 2? 'Framework': newValue === 3? 'Library': newValue === 4? 'Software Tool': '';
     this.setState({tabValue:newValue, tab: tab})
   }
 
@@ -109,10 +109,11 @@ class Search extends Component {
           <div style={{width:'80%', margin:'auto'}}>
             <div style={{display:'flex', justifyContent:'center'}}>
               <Tabs value={this.state.tabValue} style={{marginTop:'20px'}} onChange={this.filterOptions.bind(this)} TabIndicatorProps={{style: {backgroundColor:'#0093FF'}}}>
+                <Tab label='All'/>
                 <Tab label='API'/>
                 <Tab label='Framework'/>
                 <Tab label='Library'/>
-                <Tab label='Software tool'/>
+                <Tab label='Other Software tool'/>
               </Tabs>
               <Select 
                 style={{width:'120px', marginLeft:'20px', marginRight:'25px', height: '40px', marginTop:'20px', fontSize:'14px'}} 
