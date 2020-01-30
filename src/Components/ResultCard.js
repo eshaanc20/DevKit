@@ -33,7 +33,7 @@ export class ResultCard extends Component {
                 <div className="flex-containter" style={{padding:'0px'}}>     
                 {/* Result Image */}
                 <div style={{height:'160px'}}>
-                  <img className="resultCardImg" src={cardInfo.image} style={{width:'175px',height:'160px' ,paddingBottom:'0px',objectFit: 'cover', opacity:'1', borderRadius:'10px 0px 0px 10px' }} alt=""></img>
+                  <img className="resultCardImg" src={cardInfo.image} style={{width:'175px', height:'160px',paddingBottom:'0px',objectFit: 'cover', opacity:'1', borderRadius:'10px 0px 0px 10px' }} alt=""></img>
                 </div>
                 <div className="resultCardContent">
                   <CardContent style={{paddingBottom:'0px', height:'100%'}}>

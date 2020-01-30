@@ -287,7 +287,7 @@ var types = [
 	'API',
 	'Framework',
 	'Library',
-	'Other Software Tool',
+	'Software Tool',
 ]
 
 var languages = [
