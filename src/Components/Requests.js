@@ -166,7 +166,7 @@ class RequestCards extends Component {
               <CardContent>
                 <SettingsIcon style={{fontSize:'50px'}}/>
                 <h2 style={{marginBottom:'28px'}} variant='h5'>Settings</h2>
-                <TextField label="Password" onChange={(event) => this.setState({password:event.target.value})}/>
+                <TextField label="Password" onChange={(event) => this.setState({password:event.target.value})} type='password'/>
               </CardContent>
             </Card>
           </div>
